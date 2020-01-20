@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+import global from "./modules/global"
+import launcher from "./modules/launcher"
+import game from "./modules@/game"
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+    state: {},
+    mutations: {},
+    actions: {},
+    modules: { global, launcher, game }
+});

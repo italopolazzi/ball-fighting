@@ -59,7 +59,7 @@ const routes = [{
         ]
     },
     {
-        path: "/game",
+        path: "@/game",
         component: () =>
             import ( /* webpackChunkName: "game" */ "@/views/Game.vue"),
         meta: { protected: true },
