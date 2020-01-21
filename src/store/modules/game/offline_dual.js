@@ -28,6 +28,10 @@ export default {
             const controls = rootGetters["launcher/getControls"]
             const available_characters = loadAllCharacters()
             commit("START_REGISTER", { controls, available_characters })
+        },
+        registerPlayer({ commit }) {
+            console.log("registrado pelo dual");
+
         }
     },
     mutations: {

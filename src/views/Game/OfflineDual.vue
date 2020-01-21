@@ -1,13 +1,14 @@
 <template>
-  <div class="game-offline-dual">
-    game offline dual
+  <div class="game-dual-single">
+    <OfflineDualRegister />
   </div>
 </template>
 
 <script>
-
+import OfflineDualRegister from "@/components/Game/OfflineDualRegister";
 export default {
-  name: "game-offline-dual",
+  name: "game-dual-single",
+  components: { OfflineDualRegister }
 };
 </script>
 

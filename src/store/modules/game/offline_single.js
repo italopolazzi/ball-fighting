@@ -34,6 +34,10 @@ export default {
             const available_characters = loadAllCharacters()
             const genomes_population = loadGenomesPopulation(POPULATION_AMOUNT)
             commit("START_REGISTER", { controls, available_characters, genomes_population })
+        },
+        registerPlayer({ commit }) {
+            console.log("registrado pelo single");
+
         }
     },
     mutations: {
