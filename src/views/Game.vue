@@ -25,15 +25,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.game {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rebeccapurple;
-  width: 100%;
-  height: 100%;
-}
-</style>

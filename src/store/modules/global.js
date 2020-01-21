@@ -7,9 +7,6 @@ export default {
         getOverlayMessages: state => state.overlay_messages
     },
     actions: {
-        loadDefaults({ dispatch, commit }) {
-            dispatch("game/loadGameDefaults")
-        },
         addOverlayMessages({ commit }, payload) {
             commit("ADD_OVERLAY_MESSAGES", payload)
         },

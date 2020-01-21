@@ -5,11 +5,11 @@ import EffectTransferable from "@/game/scripts/Effects/EffectTransferable.js";
 import EffectInfectious from "@/game/scripts/Effects/EffectInfectious.js";
 
 class Character extends CanvasCircle {
-    constructor(id, color, canvas) {
-        const x = Math.floor(Math.random() * canvas.width);
-        const y = Math.floor(Math.random() * canvas.height);
-        super(x, y, CHARACTERS.DRAW_RADIUS, color)
-
+    constructor(id, color) {
+        super(0, 0, CHARACTERS.DRAW_RADIUS, color)
+        if (this.constructor === Character) {
+            throw new TypeError('Abstract class "Character" cannot be instantiated directly.');
+        }
         this.id = id
         this.diametry = this.radius * 2
         this.movement_speed_initial = CHARACTERS.SPEED
@@ -20,13 +20,27 @@ class Character extends CanvasCircle {
         this.life_points = this.life_points_initial
         this.effect = null
         this.player_owner = null
-        this.setLimits(canvas)
-        this.setRealPositions()
+        this.initial
+    }
+
+    setInitialPositionAtCanvas(canvas) {
+        if (canvas) {
+            this.x = Math.floor(Math.random() * canvas.width);
+            this.y = Math.floor(Math.random() * canvas.height);
+            this.setLimits(canvas)
+            this.setRealPositions()
+        } else {
+            throw Error("A canvas html element must be given as parameter to configure the character's limits")
+        }
     }
 
     draw(context) {
-        this.correctAxis()
-        super.draw(context)
+        if (this.limits && this.real_positions) {
+            this.correctAxis()
+            super.draw(context)
+        } else {
+            throw Error("The character limits must be setup before draw")
+        }
     }
 
     setLimits(canvas) {

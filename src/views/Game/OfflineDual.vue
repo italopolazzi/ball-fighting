@@ -1,6 +1,5 @@
 <template>
   <div class="game-offline-dual">
-    Game offline dual
     <GameStepper :components_sequence="components_sequence" />
   </div>
 </template>

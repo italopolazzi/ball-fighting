@@ -59,23 +59,11 @@ const routes = [{
         ]
     },
     {
-        path: "@/game",
+        path: "/game",
         component: () =>
             import ( /* webpackChunkName: "game" */ "@/views/Game.vue"),
         meta: { protected: true },
         children: [{
-                name: 'game-online-remote',
-                path: 'game-online-remote',
-                component: () =>
-                    import ( /* webpackChunkName: "game-online-remote" */ "@/views/Game/OnlineRemote.vue")
-            },
-            {
-                name: 'game-online-local',
-                path: 'game-online-local',
-                component: () =>
-                    import ( /* webpackChunkName: "game-online-local" */ "@/views/Game/OnlineLocal.vue")
-            },
-            {
                 name: 'game-offline-single',
                 path: 'game-offline-single',
                 component: () =>

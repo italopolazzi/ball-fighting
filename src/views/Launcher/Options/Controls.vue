@@ -1,8 +1,8 @@
 <template>
   <div class="options-controls">
-    <!-- ini Game online, offline and network -->
+    <!-- ini Offline single -->
     <v-container fluid>
-      <div class="display-1 mb-5">Game online, offline and network</div>
+      <div class="display-1 mb-5">Offline single</div>
       <v-layout row wrap>
         <v-flex xs4>
           <v-card>
@@ -22,9 +22,6 @@
                   <v-card-title>Select your keys</v-card-title>
 
                   <v-card-text>
-                    <KeyChanger/>
-                    <KeyChanger :player_key="'guest_player'" />
-                    <!-- <KeyChanger :player_position="3" /> -->
                   </v-card-text>
 
                   <v-divider></v-divider>
@@ -60,11 +57,11 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <!-- end Game online, offline and network -->
+    <!-- end Offline single -->
 
-    <!-- ini Game multiplayer local -->
+    <!-- ini Game offline dual -->
     <v-container fluid>
-      <div class="display-1 mb-5">Game multiplayer local</div>
+      <div class="display-1 mb-5">Game offline dual</div>
       <v-layout row wrap>
         <v-flex xs12>
           <v-card>
@@ -81,15 +78,13 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <!-- end Game multiplayer local -->
+    <!-- end Game offline dual -->
   </div>
 </template>
 
 <script>
-import KeyChanger from '@/components/Launcher/Options/Controls/KeyChanger'
 export default {
   name: "options-controls",
-  components:{KeyChanger},
   data() {
     return {
       dialog: true

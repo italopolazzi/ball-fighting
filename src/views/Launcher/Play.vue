@@ -2,18 +2,8 @@
   <div class="play">
     <v-container fluid>
       <v-layout row nowrap>
-        <v-flex xs3>
-          <!-- game-online-remote -->
-          <v-card outlined color="red lighten-2" :to="{name: 'game-online-remote', params: {start: true}}">
-            <v-list-item two-line>
-              <v-list-item-content>
-                <div class="overline">play with the world</div>
-                <div class="title">Online remote</div>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum! Eos, nesciunt delectus? Et similique alias consectetur recusandae a, beatae accusantium eligendi maiores saepe? Voluptate nam consequuntur delectus impedit dolore?</v-card-text>
-          </v-card>
-        </v-flex>
+
+
         <!-- game-offline-single -->
         <v-flex xs3>
           <v-card outlined color="green lighten-2" :to="{name: 'game-offline-single', params: {start: true}}">
@@ -38,18 +28,7 @@
             <v-card-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum! Eos, nesciunt delectus? Et similique alias consectetur recusandae a, beatae accusantium eligendi maiores saepe? Voluptate nam consequuntur delectus impedit dolore?</v-card-text>
           </v-card>
         </v-flex>
-        <!-- game-online-local -->
-        <v-flex xs3>
-          <v-card outlined color="yellow lighten-2" :to="{name: 'game-online-local', params: {start: true}}">
-            <v-list-item two-line>
-              <v-list-item-content>
-                <div class="overline">share the network with a friend</div>
-                <div class="title">Online local</div>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illum! Eos, nesciunt delectus? Et similique alias consectetur recusandae a, beatae accusantium eligendi maiores saepe? Voluptate nam consequuntur delectus impedit dolore?</v-card-text>
-          </v-card>
-        </v-flex>
+
       </v-layout>
     </v-container>
   </div>
