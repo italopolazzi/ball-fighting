@@ -1,6 +1,8 @@
+import offline_single from '@/store/modules/game/offline_single'
+
 export default {
     namespaced: true,
-    modules: {},
+    modules: { offline_single },
     state: {},
     getters: {},
     actions: {},

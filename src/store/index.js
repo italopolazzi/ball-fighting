@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import global from "./modules/global"
-import launcher from "./modules/launcher"
-import game from "./modules/game"
+import global from "@/store/modules/global"
+import launcher from "@/store/modules/launcher"
+import game from "@/store/modules/game"
 
 Vue.use(Vuex);
 

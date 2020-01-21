@@ -2,6 +2,8 @@ import generateRandomEffect from "@/game/scripts/functions/generateRandomEffect.
 import euclideanDistance from '@/game/scripts/functions/euclideanDistance.js'
 import Effect from "../Effects/Effect.js";
 
+import { BATTLE } from "@/game/defaults/defaults.js"
+
 class Battle {
     constructor(players, canvas) {
         this.players = players

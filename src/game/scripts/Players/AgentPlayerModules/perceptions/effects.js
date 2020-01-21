@@ -2,6 +2,8 @@ import agent from './effects/agent.js'
 import environment from './effects/environment.js'
 import opponent from './effects/opponent.js'
 
+import { EFFECTS } from "@/game/defaults/defaults.js"
+
 export default {
     ...agent,
     ...environment,

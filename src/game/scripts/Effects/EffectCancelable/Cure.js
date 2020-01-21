@@ -1,5 +1,7 @@
 import EffectCancelable from "@/game/scripts/Effects/EffectCancelable.js";
 
+import { EFFECTS } from "@/game/defaults/defaults.js"
+
 class Cure extends EffectCancelable {
     constructor(x, y) {
         super(x, y)

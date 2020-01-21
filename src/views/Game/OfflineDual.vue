@@ -1,19 +1,13 @@
 <template>
   <div class="game-offline-dual">
-    <GameStepper :components_sequence="components_sequence" />
+    game offline dual
   </div>
 </template>
 
 <script>
-import GameStepper from "@/components/GameStepper";
-import { mapGetters } from "vuex";
 
 export default {
   name: "game-offline-dual",
-  components: { GameStepper },
-  computed: {
-    ...mapGetters({ components_sequence: "game/offline_dual/getComponentsSequence" })
-  }
 };
 </script>
 

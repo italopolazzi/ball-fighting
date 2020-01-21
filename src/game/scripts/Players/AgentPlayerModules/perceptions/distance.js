@@ -1,5 +1,7 @@
 import euclideanDistance from '@/game/scripts/functions/euclideanDistance.js'
 
+import { PLAYERS } from "@/game/defaults/defaults.js"
+
 export default {
     distanceBetweenRadius(current_distance, object_size) {
         const sdp = PLAYERS.AGENT.SECURE_DISTANCE_PERCENTAGE

@@ -1,5 +1,12 @@
 import performMovements from '@/game/scripts/functions/performMovements.js'
 
+import {
+    TOP_FLAG,
+    LEFT_FLAG,
+    BOTTOM_FLAG,
+    RIGHT_FLAG
+} from "@/game/defaults/defaults.js"
+
 const actuators = {
     chaseTheEffect() {
         const effect = this.environmentEffect()

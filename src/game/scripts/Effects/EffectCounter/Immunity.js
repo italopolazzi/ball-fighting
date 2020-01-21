@@ -1,5 +1,7 @@
 import EffectCounter from "@/game/scripts/Effects/EffectCounter.js";
 
+import { EFFECTS } from "@/game/defaults/defaults.js"
+
 class Immunity extends EffectCounter {
     constructor(x, y) {
         super(x, y)

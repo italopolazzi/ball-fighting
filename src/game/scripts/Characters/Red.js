@@ -4,6 +4,13 @@ class Red extends Character {
         const color = "red"
         super(color, color, canvas)
     }
+
+    static info() {
+        return {
+            name: "Red",
+            force: 6
+        }
+    }
 }
 
 export default Red

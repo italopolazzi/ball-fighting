@@ -1,0 +1,9 @@
+const BATTLE = {
+    EFFECT_DROP_INTERVAL_INITIAL: 0,
+    EFFECT_DROP_INTERVAL: 5000,
+    PLAYER_TIED_FLAG: "Tied",
+    PLAYER_WIN_FLAG: "Win",
+    PLAYER_LOSE_FLAG: "Lose",
+}
+
+export default BATTLE

@@ -1,5 +1,7 @@
 import EffectInstant from "@/game/scripts/Effects/EffectInstant.js";
 
+import { EFFECTS } from "@/game/defaults/defaults.js"
+
 class MoreLifes extends EffectInstant {
     constructor(x, y) {
         super(x, y)

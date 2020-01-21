@@ -1,3 +1,5 @@
+import { CHARACTERS } from "@/game/defaults/defaults.js"
+
 const lifeScore = player => {
     const player_lifes = player.character.lifes
     const player_life_points = player.character.life_points / CHARACTERS.LIFE_POINTS

@@ -4,6 +4,13 @@ class Green extends Character {
         const color = "green"
         super(color, color, canvas)
     }
+
+    static info() {
+        return {
+            name: "Green",
+            force: 5
+        }
+    }
 }
 
 export default Green

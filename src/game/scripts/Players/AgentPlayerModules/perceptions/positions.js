@@ -1,5 +1,12 @@
 import Invisible from "@/game/scripts/Effects/EffectTimeout/Invisible.js"
 
+import {
+    TOP_FLAG,
+    LEFT_FLAG,
+    BOTTOM_FLAG,
+    RIGHT_FLAG
+} from "@/game/defaults/defaults.js"
+
 export default {
     isOpponentNear() {
         const effect = this.opponent.character.effect
