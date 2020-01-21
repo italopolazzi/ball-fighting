@@ -8,7 +8,9 @@ import game from "@/store/modules/game"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {},
+    state: {
+
+    },
     mutations: {},
     actions: {},
     modules: { global, launcher, game }

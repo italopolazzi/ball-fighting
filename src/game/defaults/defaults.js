@@ -14,6 +14,7 @@ import BATTLE from "./battle"
 import CHARACTERS from "./characters"
 import EFFECTS from "./effects"
 import PLAYERS from "./players"
+import CONTROLS from "./controls"
 
 export {
     CANVAS_CIRCLE,
@@ -29,4 +30,5 @@ export {
     CHARACTERS,
     EFFECTS,
     PLAYERS,
+    CONTROLS
 }

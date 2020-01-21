@@ -1,6 +1,7 @@
 import neat_population from '@/game/json/neat_population.js'
+const neataptic = require("@/game/vendor/neataptic.js")
 
-const loadPopulation = population_amount => {
+const loadGenomesPopulation = population_amount => {
     const loaded_population = []
     for (let i = 0; i < population_amount; i++) {
         const json = neat_population[i % neat_population.length];
@@ -9,4 +10,4 @@ const loadPopulation = population_amount => {
     return loaded_population
 }
 
-export default loadPopulation
+export default loadGenomesPopulation
