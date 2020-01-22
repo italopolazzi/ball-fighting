@@ -4,6 +4,17 @@ import Effect from "@/game/scripts/Effects/Effect.js";
 import EffectTransferable from "@/game/scripts/Effects/EffectTransferable.js";
 import EffectInfectious from "@/game/scripts/Effects/EffectInfectious.js";
 
+import {
+    CHARACTERS,
+    HORIZONTAL_AXYS,
+    VERTICAL_AXYS,
+    TOP_FLAG,
+    BOTTOM_FLAG,
+    LEFT_FLAG,
+    RIGHT_FLAG
+} from "@/game/defaults/defaults.js"
+
+
 class Character extends CanvasCircle {
     constructor(id, color) {
         super(0, 0, CHARACTERS.DRAW_RADIUS, color)
