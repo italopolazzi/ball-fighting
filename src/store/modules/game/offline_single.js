@@ -35,9 +35,16 @@ export default {
             const genomes_population = loadGenomesPopulation(POPULATION_AMOUNT)
             commit("START_REGISTER", { controls, available_characters, genomes_population })
         },
-        registerPlayer({ commit }) {
-            console.log("registrado pelo single");
+        registerPlayer({ commit }, nickname) {
+            console.log(nickname);
 
+            if (nickname.length < 5) {
+                return "Invalid length"
+            } else if (nickname === "teste") {
+                return "Invalid nickname"
+            } else {
+                commit("REGISTER_PLAYER", nickname)
+            }
         }
     },
     mutations: {
@@ -45,7 +52,9 @@ export default {
 
             state.register.players.player_1.controls = controls.client
             state.register.available_characters = available_characters
-
+        },
+        REGISTER_PLAYER(state, nickname) {
+            state.register.players.player_1.nickname = nickname
         }
     }
 }

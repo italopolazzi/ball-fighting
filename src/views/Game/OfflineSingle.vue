@@ -1,14 +1,14 @@
 <template>
   <div class="game-offline-single">
-    <OfflineSingleRegister />
+    <BattleOfflineSingle />
   </div>
 </template>
 
 <script>
-import OfflineSingleRegister from "@/components/Game/OfflineSingleRegister";
+import BattleOfflineSingle from "@/components/Game/BattleOfflineSingle";
 export default {
   name: "game-offline-single",
-  components: { OfflineSingleRegister }
+  components: { BattleOfflineSingle }
 };
 </script>
 
