@@ -1,6 +1,24 @@
 <template>
   <div class="battle-register">
-    <v-stepper v-model="current_index" :alt-labels="true">
+    <!-- buttons -->
+    <v-toolbar>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon @click="prevStep()">
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+
+      <v-btn icon class="mr-3" @click="nextStep()">
+        <v-icon>mdi-arrow-right</v-icon>
+      </v-btn>
+
+      <v-toolbar-items>
+        <v-btn @click="nextStep()">Start Battle</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    <!-- stepper -->
+    <v-stepper v-model="current_index" :alt-labels="false">
       <template>
         <v-stepper-header>
           <template v-for="(component, index) in components">
@@ -9,7 +27,8 @@
               :complete="completes[component.name]"
               :step="index"
               :rules="[]"
-            >Step {{ index }}</v-stepper-step>
+              :editable="true"
+            >{{component.name}}</v-stepper-step>
 
             <v-divider v-if="index !== steps -1" :key="component.name"></v-divider>
           </template>
@@ -17,17 +36,21 @@
 
         <v-stepper-items>
           <v-stepper-content v-for="(component, index) in components" :key="index" :step="index">
-            <component :is="component" :ref="component.name" :key="component.name" />
+            <!-- <v-row>
+             <v-col class="text-left">
+                <v-btn @click="prevStep(index)">Back</v-btn>
+              </v-col>
+              <v-spacer></v-spacer>
+              <v-col class="text-right">
+                <v-btn color="primary" @click="nextStep(index)">Continue</v-btn>
+              </v-col>
+            </v-row>-->
 
-            <v-btn @click="prevStep(index)">Back</v-btn>
-            <v-btn color="primary" @click="nextStep(index)">Continue</v-btn>
+            <component :is="component" :ref="component.name" :key="component.name" />
           </v-stepper-content>
         </v-stepper-items>
       </template>
     </v-stepper>
-    <div>
-      <v-btn @click="validate">Start</v-btn>
-    </div>
   </div>
 </template>
 
@@ -45,6 +68,8 @@ export default {
   },
   data() {
     return {
+      fab1: false,
+      fab2: false,
       current_index: 0,
       completes: {}
     };
@@ -70,18 +95,18 @@ export default {
           });
       }
     },
-    nextStep(n) {
-      if (n === this.steps - 1) {
+    nextStep() {
+      if (this.current_index === this.steps - 1) {
         this.current_index = 0;
       } else {
-        this.current_index = n + 1;
+        this.current_index = this.current_index + 1;
       }
     },
-    prevStep(n) {
-      if (n === 0) {
+    prevStep() {
+      if (this.current_index === 0) {
         this.current_index = this.steps - 1;
       } else {
-        this.current_index = n - 1;
+        this.current_index = this.current_index - 1;
       }
     }
   },

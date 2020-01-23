@@ -41,12 +41,15 @@ export default {
         getBattle: state => state.battle
     },
     actions: {
-        startRegister({ commit, state }) {
+        startRegister({ commit, state, rootGetters }) {
+
+            // todo controls selector
+            state.register.players.player_1.controls = rootGetters["launcher/getControls"].client
 
             state.available_characters = loadAllCharacters()
             state.genomes_population = loadGenomesPopulation(POPULATION_AMOUNT)
 
-            commit("START_REGISTER", { controls, available_characters, genomes_population })
+
         },
         registerPlayer({ commit }, nickname) {
             console.log(nickname);
@@ -92,10 +95,7 @@ export default {
         }
     },
     mutations: {
-        START_REGISTER(state, { controls, available_characters, genomes_population }) {
-            state.register.players.player_1.controls = controls.client
-            state.register.available_characters = available_characters
-        },
+
         REGISTER_PLAYER(state, nickname) {
             state.register.players.player_1.nickname = nickname
         },

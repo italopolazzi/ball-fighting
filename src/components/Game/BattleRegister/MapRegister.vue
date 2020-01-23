@@ -3,12 +3,7 @@
     <v-card>
       <v-card-title>Map register</v-card-title>
       <v-card-text>
-        <v-text-field
-          v-model="nickname"
-          type="text"
-          placeholder="Nickname"
-          :error-messages="error_messages"
-        ></v-text-field>
+        TODO
       </v-card-text>
     </v-card>
   </div>
@@ -19,11 +14,8 @@ export default {
   name: "map-register",
   data() {
     return {
-      nickname: "",
-      error_messages: [],
-      rules: [
-        () => this.nickname.length === 4 || "Nickname deve ter 4 characteres"
-      ]
+      
+      
     };
   }
 };

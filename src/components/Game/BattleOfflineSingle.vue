@@ -26,8 +26,8 @@ export default {
   data() {
     return {
       components: [
-        LevelRegister,
         CharacterRegister,
+        LevelRegister,
         MapRegister,
         PlayerRegister
       ]

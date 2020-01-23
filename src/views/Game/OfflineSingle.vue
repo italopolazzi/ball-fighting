@@ -1,5 +1,6 @@
 <template>
   <div class="game-offline-single">
+    
     <BattleOfflineSingle />
   </div>
 </template>
