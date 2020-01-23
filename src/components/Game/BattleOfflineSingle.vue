@@ -1,6 +1,6 @@
 <template>
   <div class="battle-offline-single">
-    <template v-if="true">
+    <template v-if="battle">
       <BattleCamp />
     </template>
     <template v-else>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import CharacterRegister from "@/components/Game/BattleRegister/CharacterRegister";
 import LevelRegister from "@/components/Game/BattleRegister/LevelRegister";
@@ -26,12 +26,15 @@ export default {
   data() {
     return {
       components: [
-        CharacterRegister,
         LevelRegister,
+        CharacterRegister,
         MapRegister,
         PlayerRegister
       ]
     };
+  },
+  computed: {
+    ...mapGetters("game/offline_single", { battle: "getBattle" })
   },
   methods: {
     ...mapActions("game/offline_single", ["startRegister", "registerPlayer"])

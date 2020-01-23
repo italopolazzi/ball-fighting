@@ -19,6 +19,7 @@ const loadRandomGenome = population_amount => {
 export default {
     namespaced: true,
     state: {
+        battle: null,
         register: {
             players: {
                 player_1: {
@@ -36,16 +37,19 @@ export default {
             genomes_population: null
         }
     },
-    getters: {},
+    getters: {
+        getBattle: state => state.battle
+    },
     actions: {
-        startRegister({ commit, rootGetters }) {
-            // const controls = rootGetters["launcher/getControls"]
-            // const available_characters = loadAllCharacters()
-            // const genomes_population = loadGenomesPopulation(POPULATION_AMOUNT)
-            // commit("START_REGISTER", { controls, available_characters, genomes_population })
+        startRegister({ commit, state }) {
+
+            state.available_characters = loadAllCharacters()
+            state.genomes_population = loadGenomesPopulation(POPULATION_AMOUNT)
+
+            commit("START_REGISTER", { controls, available_characters, genomes_population })
         },
         registerPlayer({ commit }, nickname) {
-            // console.log(nickname);
+            console.log(nickname);
 
             // if (nickname.length < 5) {
             //     return "Invalid length"
@@ -62,7 +66,7 @@ export default {
                 const battle_canvas = new BattleCanvas(canvas_container_id)
 
 
-                // console.log(battle_canvas);
+                console.log(battle_canvas);
 
                 const c1 = new Blue()
                 c1.setInitialPositionAtCanvas(battle_canvas)
@@ -83,7 +87,7 @@ export default {
         },
         async runningBattle({ state, commit }) {
             const results = await state.battle.run()
-            console.log(results);
+                // console.log(results);
             commit("SET_RESULTS", results)
         }
     },
@@ -99,7 +103,7 @@ export default {
             state.battle = battle
         },
         SET_RESULTS(state, results) {
-            console.log(results);
+            // console.log(results);
             state.results = results
         }
     }
