@@ -12,7 +12,7 @@ export default {
                 character: null
             },
             guest: {
-                type: AgentPlayer,
+                type: HumanPlayer,
                 nickname: null,
                 controls: null,
                 character: null
@@ -25,8 +25,12 @@ export default {
     actions: {},
     getters: {
         getPlayersByType: state => class_type => {
-            const players = Object.values(state.players)
-            const filtered = players.filter(p => p.type === class_type)
+            const players = state.players
+            const filtered = Object.keys(players).reduce((acc, key) => {
+                const player = players[key]
+                if (player.type === class_type) acc[key] = player
+                return acc
+            }, {})
             return filtered
         },
         getHumanPlayers: (state, getters) => {
