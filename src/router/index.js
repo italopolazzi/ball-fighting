@@ -17,7 +17,20 @@ const routes = [{
                 name: "launcher-play",
                 path: 'launcher-play',
                 component: () =>
-                    import ( /* webpackChunkName: "play" */ "@/views/Launcher/Play")
+                    import ( /* webpackChunkName: "play" */ "@/views/Launcher/Play"),
+                children: [{
+                        name: "register-offline-single",
+                        path: "/register-offline-single",
+                        component: () =>
+                            import ( /* webpackChunkName: "register-offline-single" */ "@/views/Launcher/Play/RegisterOfflineSingle.vue")
+                    },
+                    {
+                        name: "register-offline-dual",
+                        path: "/register-offline-dual",
+                        component: () =>
+                            import ( /* webpackChunkName: "register-offline-dual" */ "@/views/Launcher/Play/RegisterOfflineDual.vue")
+                    }
+                ]
             },
             {
                 name: "launcher-about",
@@ -58,26 +71,26 @@ const routes = [{
             }
         ]
     },
-    {
-        path: "/game",
-        component: () =>
-            import ( /* webpackChunkName: "game" */ "@/views/Game.vue"),
-        meta: { protected: true },
-        children: [{
-                name: 'game-offline-single',
-                path: 'game-offline-single',
-                component: () =>
-                    import ( /* webpackChunkName: "game-offline-single" */ "@/views/Game/OfflineSingle.vue")
-            },
-            {
-                name: 'game-offline-dual',
-                path: 'game-offline-dual',
-                component: () =>
-                    import ( /* webpackChunkName: "game-offline-dual" */ "@/views/Game/OfflineDual.vue")
-            },
+    // {
+    //     path: "/game",
+    //     component: () =>
+    //         import ( /* webpackChunkName: "game" */ "@/views/Game.vue"),
+    //     meta: { protected: true },
+    //     children: [{
+    //             name: 'game-offline-single',
+    //             path: 'game-offline-single',
+    //             component: () =>
+    //                 import ( /* webpackChunkName: "game-offline-single" */ "@/views/Game/OfflineSingle.vue")
+    //         },
+    //         {
+    //             name: 'game-offline-dual',
+    //             path: 'game-offline-dual',
+    //             component: () =>
+    //                 import ( /* webpackChunkName: "game-offline-dual" */ "@/views/Game/OfflineDual.vue")
+    //         },
 
-        ]
-    }
+    //     ]
+    // }
 ];
 
 const router = new VueRouter({
