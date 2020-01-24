@@ -1,4 +1,4 @@
-import dual from "./game/dual"
+import dual from "./register/dual"
 
 export default {
     namespaced: true,
