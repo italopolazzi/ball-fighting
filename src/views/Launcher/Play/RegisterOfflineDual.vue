@@ -1,6 +1,6 @@
 <template>
   <div class="register-offline-dual">
-   
+    
   </div>
 </template>
 
