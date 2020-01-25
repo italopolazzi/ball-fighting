@@ -1,9 +1,12 @@
 <template>
-  <div class="players-register">
+  <div class="characters-register">
     Total valid: {{total_valid}}
     <v-row>
       <v-col v-for="(player, player_key) in players" :key="player_key">
-        <PlayerRegister @playerRegisterValid="register" :player="player" />
+        <CharacterRegister
+          @characterRegisterValid="register"
+          :player="{key: player_key, ...player}"
+        />
       </v-col>
     </v-row>
   </div>
@@ -11,13 +14,16 @@
 
 <script>
 import { mapGetters } from "vuex";
-import PlayerRegister from "@/components/Register/PlayerRegister";
+import CharacterRegister from "@/components/Register/CharacterRegister";
 
 export default {
-  name: "players-register",
-  components: { PlayerRegister },
+  name: "characters-register",
+  components: { CharacterRegister },
   computed: {
-    ...mapGetters("register/dual", { players: "getHumanPlayers" })
+    ...mapGetters("register/dual", {
+      players: "getPlayers",
+      characters: "getAvailableCharacters"
+    })
   },
   data() {
     return {

@@ -8,6 +8,7 @@ import Pink from "@/game/scripts/Characters/Pink"
 import Cyan from "@/game/scripts/Characters/Cyan"
 import Blue from "@/game/scripts/Characters/Blue"
 import Red from "@/game/scripts/Characters/Red"
+
 const loadAllCharacters = () => {
     return [
         Teal,
