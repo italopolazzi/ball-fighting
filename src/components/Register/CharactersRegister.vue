@@ -4,7 +4,7 @@
       <v-col v-for="(player, player_key) in players" :key="player_key">
         <CharacterRegister
           @characterRegisterValid="register"
-          :player="{key: player_key, ...player}"
+          :character="player.character"
         />
       </v-col>
     </v-row>

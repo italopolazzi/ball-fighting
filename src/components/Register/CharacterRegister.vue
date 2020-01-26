@@ -1,38 +1,22 @@
 <template>
   <div class="character-register">
-    <v-item-group>
-      <v-container fluid>
-        <v-row no-gutters justify="start">
-          <v-col v-for="(character, character_key) in available_characters" :key="character_key">
-            <v-item v-slot:default="{toggle}">
-              <v-card
-                @click="toggle(); validateCharacter(character)"
-                :color="character.name.toLowerCase()"
-                height="58"
-                width="58"
-                class="circle"
-              >
-                <v-card-text>
-                  <v-icon
-                    v-if="player.character && character.name === player.character.name"
-                  >mdi-check</v-icon>
-                </v-card-text>
-              </v-card>
-            </v-item>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-item-group>
+    <v-btn @click="character_index = 1">1</v-btn>
+    <v-btn @click="character_index = 4">4</v-btn>
+    <ItemGroupSelector :items="available_characters" v-model="character_index" :rules="rules" />
+    {{character_index}}
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
+
+import ItemGroupSelector from "@/components/Register/ItemGroupSelector";
 
 export default {
   name: "character-register",
+  components: { ItemGroupSelector },
   props: {
-    player: {
+    character: {
       type: Object,
       required: true
     }
@@ -41,42 +25,19 @@ export default {
     ...mapGetters("register/dual", {
       available_characters: "getAvailableCharacters",
       characters: "getCharacters"
-    })
+    }),
+    rules() {
+      // console.log(this.available_characters);
+      const characters = this.characters;
+      // console.log(characters);
+
+      return [];
+    }
   },
   data() {
     return {
-      valid: false
+      character_index: false
     };
-  },
-  methods: {
-    ...mapActions("register/dual", ["setCharacterForPlayer"]),
-    validateCharacter(character) {
-      const characterDifferent = (character, characters) => {
-        return !characters.includes(character);
-      };
-
-      const { characters } = this;
-      const different = characterDifferent(character, characters);
-
-      if (different) {
-        this.setCharacterForPlayer({ player_key: this.player.key, character });
-      }
-      this.valid = different;
-      return different;
-    }
-  },
-  watch: {
-    valid(val, old_val) {
-      if (val !== old_val) {
-        this.$emit("characterRegisterValid", val);
-      }
-    }
   }
 };
 </script>
-
-<style scoped>
-.circle {
-  border-radius: 50% !important;
-}
-</style>

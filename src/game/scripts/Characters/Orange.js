@@ -8,6 +8,7 @@ class Orange extends Character {
     static info() {
         return {
             name: "Orange",
+            color: "orange",
             force: 3
         }
     }

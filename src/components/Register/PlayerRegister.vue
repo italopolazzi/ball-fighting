@@ -45,10 +45,8 @@ export default {
       };
 
       const { player, players } = this;
-      return (
-        nicknameDifferent(player, players) ||
-        "Another player is already using this nickname."
-      );
+      const different = nicknameDifferent(player, players);
+      return different || "Another player is already using this nickname.";
     }
   },
   watch: {

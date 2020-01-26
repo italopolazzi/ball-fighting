@@ -8,6 +8,7 @@ class Cyan extends Character {
     static info() {
         return {
             name: "Cyan",
+            color: "cyan",
             force: 3
         }
     }

@@ -15,13 +15,13 @@ export default {
                 type: HumanPlayer,
                 nickname: "",
                 controls: null,
-                character: null
+                character: {}
             },
             guest: {
                 type: HumanPlayer,
                 nickname: "",
                 controls: null,
-                character: null
+                character: {}
             }
         },
         available_characters: all_characters.map(c => c.info()),

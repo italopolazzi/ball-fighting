@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-item-group>
         <v-row wrap>
-          <v-col v-for="item in items" :key="item">
+          <v-col v-for="(item, key) in items" :key="key">
             <v-item v-slot:default="{active, toggle}">
               <v-card @click="toggle" :to="item.to" :color="active ? '' : item.color">
                 <v-list-item two-line>
