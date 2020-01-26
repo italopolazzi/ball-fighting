@@ -1,8 +1,8 @@
 <template>
-  <div class="players-register">
+  <div class="levels-register">
     <v-row>
       <v-col v-for="(player, player_key) in players" :key="player_key">
-        <PlayerRegister @playerRegisterValid="register" :player="player" />
+        <LevelRegister />
       </v-col>
     </v-row>
   </div>
@@ -10,18 +10,18 @@
 
 <script>
 import { mapGetters } from "vuex";
-import PlayerRegister from "@/components/Register/PlayerRegister";
+import LevelRegister from "@/components/Register/LevelRegister";
 
 export default {
-  name: "players-register",
-  components: { PlayerRegister },
+  name: "levels-register",
+  components: { LevelRegister },
   computed: {
     ...mapGetters("register/dual", { players: "getHumanPlayers" })
   },
   data() {
     return {
-      total_valid: 0,
-      rules: [() => this.total_valid === Object.keys(this.players).length]
+      total_valid: 0
+      // rules: [() => this.total_valid === this.players.length]
     };
   },
   methods: {

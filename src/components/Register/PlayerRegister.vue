@@ -9,18 +9,6 @@
         required
       ></v-text-field>
     </v-form>
-    <div>
-      <strong>Player:</strong>
-      {{player}}
-    </div>
-    <div>
-      <strong>State:</strong>
-      {{state}}
-    </div>
-    <div>
-      <strong>Form valid:</strong>
-      {{valid}}
-    </div>
   </div>
 </template>
 

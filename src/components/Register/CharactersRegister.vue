@@ -1,6 +1,5 @@
 <template>
   <div class="characters-register">
-    Total valid: {{total_valid}}
     <v-row>
       <v-col v-for="(player, player_key) in players" :key="player_key">
         <CharacterRegister
@@ -28,7 +27,7 @@ export default {
   data() {
     return {
       total_valid: 0,
-      rules: [() => this.total_valid === this.players.length]
+      rules: [() => this.total_valid === Object.keys(this.players).length]
     };
   },
   methods: {
