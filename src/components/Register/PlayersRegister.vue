@@ -2,7 +2,7 @@
   <div class="players-register">
     <v-row>
       <v-col v-for="(player, player_key) in players" :key="player_key">
-        <PlayerRegister @playerRegisterValid="register" :player="{key: player_key, ...player}" />
+        <PlayerRegister @playerRegisterValid="register" :player="player" />
       </v-col>
     </v-row>
   </div>
