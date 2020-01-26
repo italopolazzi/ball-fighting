@@ -1,8 +1,8 @@
 <template>
   <div class="levels-register">
     <v-row>
-      <v-col v-for="(player, player_key) in players" :key="player_key">
-        <LevelRegister />
+      <v-col>
+        <LevelRegister @levelRegisterValid="register" />
       </v-col>
     </v-row>
   </div>
@@ -20,8 +20,8 @@ export default {
   },
   data() {
     return {
-      total_valid: 0
-      // rules: [() => this.total_valid === this.players.length]
+      total_valid: 0,
+      rules: [() => this.total_valid === 1]
     };
   },
   methods: {

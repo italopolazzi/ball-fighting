@@ -32,7 +32,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("register/dual", { players: "getPlayers", state: "getState" })
+    ...mapGetters("register/dual", { players: "getPlayers" })
   },
   methods: {
     validateNickname() {

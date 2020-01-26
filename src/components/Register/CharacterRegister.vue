@@ -6,7 +6,7 @@
           <v-col v-for="(character, character_key) in available_characters" :key="character_key">
             <v-item v-slot:default="{toggle}">
               <v-card
-                @click="toggle(); setCharacter(character)"
+                @click="toggle(); validateCharacter(character)"
                 :color="character.name.toLowerCase()"
                 height="58"
                 width="58"
@@ -40,8 +40,7 @@ export default {
   computed: {
     ...mapGetters("register/dual", {
       available_characters: "getAvailableCharacters",
-      characters: "getCharacters",
-      state: "getState"
+      characters: "getCharacters"
     })
   },
   data() {
@@ -51,12 +50,12 @@ export default {
   },
   methods: {
     ...mapActions("register/dual", ["setCharacterForPlayer"]),
-    setCharacter(character) {
+    validateCharacter(character) {
       const characterDifferent = (character, characters) => {
         return !characters.includes(character);
       };
 
-      const characters = this.characters;
+      const { characters } = this;
       const different = characterDifferent(character, characters);
 
       if (different) {
@@ -76,7 +75,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .circle {
   border-radius: 50% !important;
 }

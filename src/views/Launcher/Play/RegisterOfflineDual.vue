@@ -49,7 +49,7 @@ export default {
     return {
       valids: null,
       current_index: 0,
-      registers: [CharactersRegister, PlayersRegister, LevelsRegister]
+      registers: [LevelsRegister, CharactersRegister, PlayersRegister]
     };
   },
   created() {
