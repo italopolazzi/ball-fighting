@@ -1,43 +1,53 @@
 <template>
   <div class="character-register">
-    <v-btn @click="character_index = 1">1</v-btn>
-    <v-btn @click="character_index = 4">4</v-btn>
-    <ItemGroupSelector :items="available_characters" v-model="character_index" :rules="rules" />
-    {{character_index}}
+    <ItemGroupSelector
+      :available_items="available_characters"
+      :selected_items="characters"
+      v-model="value"
+    />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
+import { mapGetters, mapActions } from "vuex";
 import ItemGroupSelector from "@/components/Register/ItemGroupSelector";
 
 export default {
   name: "character-register",
   components: { ItemGroupSelector },
   props: {
-    character: {
+    player: {
       type: Object,
       required: true
     }
   },
+  data() {
+    return {
+      value: null
+    };
+  },
   computed: {
     ...mapGetters("register/dual", {
       available_characters: "getAvailableCharacters",
-      characters: "getCharacters"
+      characters: "getCharacters",
+      state: "getState"
     }),
-    rules() {
-      // console.log(this.available_characters);
-      const characters = this.characters;
-      // console.log(characters);
-
-      return [];
+    valid() {
+      return this.player.character;
     }
   },
-  data() {
-    return {
-      character_index: false
-    };
+  methods: {
+    ...mapActions("register/dual", ["setCharacterForPlayer"])
+  },
+  watch: {
+    value(val) {
+      const player_key = this.player.key;
+      const character = val;
+      this.setCharacterForPlayer({ player_key, character });
+    },
+    valid(val) {      
+        this.$emit("input", !!val);
+    }
   }
 };
 </script>

@@ -1,13 +1,11 @@
 <template>
   <div class="characters-register">
     <v-row>
-      <v-col v-for="(player, player_key) in players" :key="player_key">
-        <CharacterRegister
-          @characterRegisterValid="register"
-          :character="player.character"
-        />
+      <v-col v-for="(player, key) in players" :key="key">
+        <CharacterRegister v-model="valids[key]" :player="{key, ...player}" />
       </v-col>
     </v-row>
+    CharactersRegister: {{valids}}
   </div>
 </template>
 
@@ -20,20 +18,17 @@ export default {
   components: { CharacterRegister },
   computed: {
     ...mapGetters("register/dual", {
-      players: "getPlayers",
-      characters: "getAvailableCharacters"
+      players: "getPlayers"
     })
   },
   data() {
     return {
-      total_valid: 0,
-      rules: [() => this.total_valid === Object.keys(this.players).length]
+      valids: {},
+      rules: [
+        () => Object.values(this.valids).length === Object.values(this.players).length,
+        () => Object.values(this.valids).every(v => v === true)
+      ]
     };
-  },
-  methods: {
-    register(bool) {
-      bool ? this.total_valid++ : this.total_valid--;
-    }
   }
 };
 </script>

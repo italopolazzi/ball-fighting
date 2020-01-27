@@ -1,19 +1,22 @@
 <template>
   <div class="item-group-selector">
-    {{value}}
     <v-item-group>
       <v-container fluid>
-        <v-row no-gutters>
-          <v-col v-for="(item, index) in items" :key="index">
+        <v-row>
+          <v-col v-for="(available_item, item_index) in available_items" :key="item_index">
             <v-item v-slot:default="{toggle}">
               <v-card
-                @click="toggle(); emit(index)"
+                :disabled="isSelectedIndex(item_index)"
+                @click="emit(available_item, toggle)"
                 :width="sizes.width"
                 :height="sizes.height"
-                :color="item.color"
+                :color="available_item.color"
+                class="circle"
               >
                 <v-card-text>
-                  <v-icon v-if="index === value">{{icon}}</v-icon>
+                  <v-icon v-for="(icon,icon_index) in indexes" :key="icon_index" class="text_2rem">
+                    <template v-if="indexes[icon_index] === item_index">mdi-numeric-{{icon_index+1}}</template>
+                  </v-icon>
                 </v-card-text>
               </v-card>
             </v-item>
@@ -21,9 +24,7 @@
         </v-row>
       </v-container>
     </v-item-group>
-    <v-slide-y-transition mode="out-in">
-      <div v-if="errors_messages" class="red--text">{{errors_messages}}</div>
-    </v-slide-y-transition>
+    {{value}}
   </div>
 </template>
 
@@ -31,11 +32,11 @@
 export default {
   name: "item-group-selector",
   props: {
-    rules: {
-      type: Array,
-      required: false
+    available_items: {
+      type: [Object, Array],
+      required: true
     },
-    items: {
+    selected_items: {
       type: [Object, Array],
       required: true
     },
@@ -46,35 +47,64 @@ export default {
       }
     },
     value: {
-      type: [Number, Boolean],
       required: true
     }
   },
   computed: {
-    icon() {
-      return this.errors ? "mdi-cancel" : "mdi-check";
-    },
-    errors_messages() {
-      if (this.errors) return this.errors[0];
-      return null;
-    },
-    errors() {
-      const { rules, value } = this;
-      if (!rules) return false;
-      const all_true = rules.every(r => r(value) === true);
-      if (all_true) return false;
-      const rules_mapped = rules.map(r => r(value));
-      const strings = rules_mapped.filter(i => typeof i === "string");
-      return strings;
+    indexes() {
+      return this.selectedEquivalentIndexes();
     }
   },
   methods: {
-    emit(index) {
-      this.$emit("input", index);
+    emit(item, toggle) {
+      this.$emit("input", item);
+      toggle();
+    },
+    isEquivalent(a, b) {
+      if (!a) return false;
+      if (!b) return false;
+      const aProps = Object.getOwnPropertyNames(a);
+      const bProps = Object.getOwnPropertyNames(b);
+      if (aProps.length != bProps.length) {
+        return false;
+      }
+      for (let i = 0; i < aProps.length; i++) {
+        const propName = aProps[i];
+        if (a[propName] !== b[propName]) {
+          return false;
+        }
+      }
+      return true;
+    },
+    selectedEquivalentIndexes() {
+      Array.prototype.indexOfEquivalent = function(v, isEquivalent) {
+        for (let i = 0; i < this.length; i++) {
+          const element = this[i];
+          if (isEquivalent(v, element) || v === element) return i;
+        }
+        return -1;
+      };
+      const { isEquivalent, available_items, selected_items } = this;
+      const indexes = [];
+      for (let i = 0; i < selected_items.length; i++) {
+        const element = selected_items[i];
+        const index = available_items.indexOfEquivalent(element, isEquivalent);
+        indexes.push(index);
+      }
+      return indexes;
+    },
+    isSelectedIndex(index) {
+      return this.indexes.includes(index);
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
+.text_2rem {
+  font-size: 2rem;
+}
+.circle {
+  border-radius: 50% !important;
+}
 </style>
