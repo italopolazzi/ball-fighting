@@ -1,8 +1,14 @@
 <template>
   <div class="register-offline-dual">
-    <v-btn @click="validate">Validate</v-btn>
     <v-btn @click="validateAll">Validate all</v-btn>
     <v-btn @click="play" :disabled="!valid">Play</v-btn>
+    {{valids}}
+    {{valid}}
+    <v-card>
+      <v-card-text>
+        {{state}}
+      </v-card-text>
+    </v-card>
     <v-stepper v-model="current_index" @change="validateAll">
       <!-- header -->
       <v-stepper-header>
@@ -13,8 +19,7 @@
             :complete="valids[index]"
             editable
             :step="index"
-            :alt-labels="true"
-          >Step</v-stepper-step>
+          >Step {{index}}</v-stepper-step>
         </template>
       </v-stepper-header>
       <!-- content -->
@@ -37,7 +42,7 @@ export default {
   name: "register-offline-dual",
   components: { PlayersRegister, CharactersRegister },
   computed: {
-    ...mapGetters("register/dual", {}),
+    ...mapGetters("register/dual", { state: "getState" }),
     current_component() {
       return this.registers[this.current_index];
     },
@@ -47,18 +52,18 @@ export default {
   },
   data() {
     return {
-      valids: null,
+      valids: [],
       current_index: 0,
       registers: [CharactersRegister, LevelsRegister, PlayersRegister]
     };
   },
-  created() {
-    this.valids = this.registers.map(reg => !reg);
+  mounted() {
+    this.validateAll()
   },
   methods: {
     play() {},
     nextStep() {
-      this.validate();
+      this.validateAll();
       if (this.current_index === this.registers.length - 1) {
         this.current_index = 0;
       } else {
@@ -66,16 +71,12 @@ export default {
       }
     },
     prevStep() {
-      this.validate();
+      this.validateAll();
       if (this.current_index === 0) {
         this.current_index = this.registers.length - 1;
       } else {
         this.current_index--;
       }
-    },
-    validate() {
-      const rules = this.$refs[this.current_index][0].rules;
-      this.valids[this.current_index] = !rules || rules.every(r => r());
     },
     validateAll() {
       const refs = Object.values(this.$refs);
@@ -83,7 +84,19 @@ export default {
         const rules = ref[0].rules;
         return !rules || rules.every(r => r());
       });
+      console.log(valids);
+      
       this.valids = valids;
+    }
+  },
+  watch: {
+    state: {
+      deep: true,
+      handler(val, old) {
+        if(val !== old){
+          this.validateAll();
+        }
+      }
     }
   }
 };

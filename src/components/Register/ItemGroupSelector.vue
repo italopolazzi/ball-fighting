@@ -24,7 +24,6 @@
         </v-row>
       </v-container>
     </v-item-group>
-    {{value}}
   </div>
 </template>
 

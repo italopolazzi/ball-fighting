@@ -2,7 +2,7 @@
   <div class="levels-register">
     <v-row>
       <v-col>
-        <LevelRegister @levelRegisterValid="register" />
+        <LevelRegister v-model="valid" />
       </v-col>
     </v-row>
   </div>
@@ -20,14 +20,9 @@ export default {
   },
   data() {
     return {
-      total_valid: 0,
-      rules: [() => this.total_valid === 1]
+      valid: false,
+      rules: [() => !!this.valid]
     };
-  },
-  methods: {
-    register(bool) {
-      bool ? this.total_valid++ : this.total_valid--;
-    }
   }
 };
 </script>

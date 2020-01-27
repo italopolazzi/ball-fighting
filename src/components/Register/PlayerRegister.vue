@@ -2,7 +2,6 @@
   <div class="player-register">
     <v-form ref="form" v-model="valid">
       <v-text-field
-        @input="validateNickname"
         v-model="player.nickname"
         label="Nickname"
         :rules="[validateNickname, ...nickname_rules]"
@@ -50,10 +49,8 @@ export default {
     }
   },
   watch: {
-    valid(val, old_val) {
-      if (val !== old_val) {
-        this.$emit("playerRegisterValid", val);
-      }
+    valid(val) {
+        this.$emit("input", val);
     }
   }
 };

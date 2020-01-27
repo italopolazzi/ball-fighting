@@ -5,7 +5,6 @@
         <CharacterRegister v-model="valids[key]" :player="{key, ...player}" />
       </v-col>
     </v-row>
-    CharactersRegister: {{valids}}
   </div>
 </template>
 

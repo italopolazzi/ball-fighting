@@ -2,7 +2,7 @@
   <div class="players-register">
     <v-row>
       <v-col v-for="(player, key) in players" :key="key">
-        <PlayerRegister @playerRegisterValid="register" :player="player" />
+        <PlayerRegister v-model="valids[key]" :player="player" />
       </v-col>
     </v-row>
   </div>
@@ -20,14 +20,14 @@ export default {
   },
   data() {
     return {
-      total_valid: 0,
-      rules: [() => this.total_valid === Object.keys(this.players).length]
+      valids: {},
+      rules: [
+        () =>
+          Object.values(this.valids).length ===
+          Object.values(this.players).length,
+        () => Object.values(this.valids).every(v => v === true)
+      ]
     };
-  },
-  methods: {
-    register(bool) {
-      bool ? this.total_valid++ : this.total_valid--;
-    }
   }
 };
 </script>

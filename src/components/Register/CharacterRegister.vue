@@ -5,6 +5,7 @@
       :selected_items="characters"
       v-model="value"
     />
+    character-register: {{value}}
   </div>
 </template>
 

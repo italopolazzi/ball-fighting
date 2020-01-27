@@ -3,9 +3,12 @@
     <v-item-group>
       <v-container fluid>
         <v-row>
-          <v-col v-for="(level, key) in available_levels" :key="key">
-            <v-item v-slot:default="{active, toggle}">
-              <v-card @click="toggle(); setLevel(level)" :outlined="active">
+          <v-col v-for="(available_level, key) in available_levels" :key="key">
+            <v-item v-slot:default="{toggle}">
+              <v-card
+                @click="toggle(); setLevel(available_level)"
+                :outlined="available_level === choosed_level"
+              >
                 <v-card-title>{{key}}</v-card-title>
               </v-card>
             </v-item>
@@ -13,7 +16,6 @@
         </v-row>
       </v-container>
     </v-item-group>
-    {{choosed_level}}
   </div>
 </template>
 
@@ -21,30 +23,25 @@
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "level-register",
+  props: {
+    value: { required: true }
+  },
   computed: {
     ...mapGetters("register/dual", {
       available_levels: "getAvailableLevels",
       choosed_level: "getChoosedLevel"
     })
   },
-  data() {
-    return {
-      valid: false,
-      leve: null
-    };
-  },
   methods: {
     ...mapActions("register/dual", ["setChoosedLevel"]),
     setLevel(level) {
       this.setChoosedLevel(level);
-      this.valid = true;
+      this.value = !!level;
     }
   },
   watch: {
-    valid(val, old_val) {
-      if (val !== old_val) {
-        this.$emit("levelRegisterValid", val);
-      }
+    value(val) {
+      this.$emit("input", val);
     }
   }
 };
