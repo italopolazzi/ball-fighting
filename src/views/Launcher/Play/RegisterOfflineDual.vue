@@ -1,29 +1,39 @@
 <template>
   <div class="register-offline-dual">
-    <v-btn @click="validateAll">Validate all</v-btn>
-    <v-btn @click="play" :disabled="!valid">Play</v-btn>
-    {{valids}}
-    {{valid}}
-    <v-card>
-      <v-card-text>{{state}}</v-card-text>
-    </v-card>
-    <v-stepper v-model="current_index" @change="validateAll">
-      <!-- header -->
-      <v-stepper-header>
-        <template v-for="(register, index) in registers">
-          <v-stepper-step :key="index" :complete="valids[index]" :step="index" :alt-labels="true">
-            <div class="text-capitalize">{{stepLabel(register.name)}}</div>
-          </v-stepper-step>
-          <v-divider :key="register.name" v-if="index < Object.keys(registers).length-1"></v-divider>
-        </template>
-      </v-stepper-header>
-      <!-- content -->
-      <v-stepper-content v-for="(register, index) in registers" :key="index" :step="index">
-        <v-btn @click="prevStep">Prev</v-btn>
-        <v-btn @click="nextStep">Next</v-btn>
-        <component :is="register" :key="register.name" :ref="index" />
-      </v-stepper-content>
-    </v-stepper>
+    <v-container>
+      <v-toolbar dense color="yellow">
+        <v-btn icon @click="prevStep">
+          <v-icon>mdi-arrow-left</v-icon>
+        </v-btn>
+        <v-btn icon @click="nextStep">
+          <v-icon>mdi-arrow-right</v-icon>
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn text @click="validateAll">Validate all</v-btn>
+        <v-btn text @click="play" :disabled="!valid">Play</v-btn>
+      </v-toolbar>
+      <v-stepper v-model="current_index">
+        <!-- header -->
+        <v-stepper-header>
+          <template v-for="(register, index) in registers">
+            <v-stepper-step
+              :key="index"
+              :complete="valids[index]"
+              editable
+              :step="index + 1"
+              :alt-labels="true"
+            >
+              <div class="text-capitalize">{{ stepLabel(register.name) }}</div>
+            </v-stepper-step>
+            <v-divider :key="register.name" v-if="index < Object.keys(registers).length - 1"></v-divider>
+          </template>
+        </v-stepper-header>
+        <!-- content -->
+        <v-stepper-content v-for="(register, index) in registers" :key="index" :step="index + 1">
+          <component :is="register" :key="register.name" :ref="index" />
+        </v-stepper-content>
+      </v-stepper>
+    </v-container>
   </div>
 </template>
 
@@ -48,7 +58,7 @@ export default {
   data() {
     return {
       valids: [],
-      current_index: 0,
+      current_index: 1,
       registers: [CharactersRegister, LevelsRegister, PlayersRegister]
     };
   },
@@ -59,16 +69,16 @@ export default {
     play() {},
     nextStep() {
       this.validateAll();
-      if (this.current_index === this.registers.length - 1) {
-        this.current_index = 0;
+      if (this.current_index === this.registers.length) {
+        this.current_index = 1;
       } else {
         this.current_index++;
       }
     },
     prevStep() {
       this.validateAll();
-      if (this.current_index === 0) {
-        this.current_index = this.registers.length - 1;
+      if (this.current_index === 1) {
+        this.current_index = this.registers.length;
       } else {
         this.current_index--;
       }
@@ -100,5 +110,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang="sass" scoped>
+// $stepper-elevation: 0 !important
 </style>

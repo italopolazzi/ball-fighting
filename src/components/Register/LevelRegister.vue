@@ -8,8 +8,9 @@
               <v-card
                 @click="toggle(); setLevel(available_level)"
                 :outlined="available_level === choosed_level"
+                elevation="0"
               >
-                <v-card-title>{{key}}</v-card-title>
+                <v-card-text class="text-center headline">{{key}}</v-card-text>
               </v-card>
             </v-item>
           </v-col>
