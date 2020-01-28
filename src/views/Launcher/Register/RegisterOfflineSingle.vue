@@ -7,6 +7,3 @@ export default {
   name: "register-offline-single"
 };
 </script>
-
-<style>
-</style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="hall">hall</div>
+  <div class="launcher-hall">launcher-hall</div>
 </template>
 
 <script>
 export default {
-  name: "hall"
+  name: "launcher-hall"
 };
 </script>
 

@@ -1,9 +1,10 @@
-const webpack = require("webpack")
-
+// // vue.config.js
 module.exports = {
-    configureWebpack: {
-        plugins: [
-
-        ]
+    css: {
+        loaderOptions: {
+            sass: {
+                implementation: require('sass'), // This line must in sass option
+            },
+        },
     }
 }

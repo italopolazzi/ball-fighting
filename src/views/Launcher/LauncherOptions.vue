@@ -1,5 +1,5 @@
 <template>
-  <div class="options">
+  <div class="launcher-options">
     <v-container fluid>
       <v-layout row wrap>
         <v-flex xs4>
@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "options"
+  name: "launcher-options"
 };
 </script>
 

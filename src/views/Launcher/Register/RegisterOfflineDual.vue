@@ -1,39 +1,38 @@
 <template>
   <div class="register-offline-dual">
-    <v-container>
-      <v-toolbar dense color="yellow">
-        <v-btn icon @click="prevStep">
-          <v-icon>mdi-arrow-left</v-icon>
-        </v-btn>
-        <v-btn icon @click="nextStep">
-          <v-icon>mdi-arrow-right</v-icon>
-        </v-btn>
-        <v-spacer></v-spacer>
-        <v-btn text @click="validateAll">Validate all</v-btn>
-        <v-btn text @click="play" :disabled="!valid">Play</v-btn>
-      </v-toolbar>
-      <v-stepper v-model="current_index">
-        <!-- header -->
-        <v-stepper-header>
-          <template v-for="(register, index) in registers">
-            <v-stepper-step
-              :key="index"
-              :complete="valids[index]"
-              editable
-              :step="index + 1"
-              :alt-labels="true"
-            >
-              <div class="text-capitalize">{{ stepLabel(register.name) }}</div>
-            </v-stepper-step>
-            <v-divider :key="register.name" v-if="index < Object.keys(registers).length - 1"></v-divider>
-          </template>
-        </v-stepper-header>
-        <!-- content -->
-        <v-stepper-content v-for="(register, index) in registers" :key="index" :step="index + 1">
-          <component :is="register" :key="register.name" :ref="index" />
-        </v-stepper-content>
-      </v-stepper>
-    </v-container>
+    
+    <v-toolbar dense :color="color">
+      <v-btn icon @click="prevStep">
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+      <v-btn icon @click="nextStep">
+        <v-icon>mdi-arrow-right</v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn text @click="validateAll">Validate all</v-btn>
+      <v-btn text @click="play" :disabled="!valid">Play</v-btn>
+    </v-toolbar>
+    <v-stepper v-model="current_index">
+      <!-- header -->
+      <v-stepper-header>
+        <template v-for="(register, index) in registers">
+          <v-stepper-step
+            :key="index"
+            :complete="valids[index]"
+            editable
+            :step="index + 1"
+            :alt-labels="true"
+          >
+            <div class="text-capitalize">{{ stepLabel(register.name) }}</div>
+          </v-stepper-step>
+          <v-divider :key="register.name" v-if="index < Object.keys(registers).length - 1"></v-divider>
+        </template>
+      </v-stepper-header>
+      <!-- content -->
+      <v-stepper-content v-for="(register, index) in registers" :key="index" :step="index + 1">
+        <component :is="register" :key="register.name" :ref="index" />
+      </v-stepper-content>
+    </v-stepper>
   </div>
 </template>
 
@@ -45,7 +44,13 @@ import LevelsRegister from "@/components/Register/LevelsRegister";
 import { mapGetters } from "vuex";
 export default {
   name: "register-offline-dual",
-  components: { PlayersRegister, CharactersRegister },
+  props: {
+    color: {
+      type: String,
+      required: false
+    }
+  },
+  components: { PlayersRegister, CharactersRegister, LevelsRegister },
   computed: {
     ...mapGetters("register/dual", { state: "getState" }),
     current_component() {
@@ -110,6 +115,10 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-// $stepper-elevation: 0 !important
+<style lang="sass">
+  // @import '~vuetify/src/styles/variables.sass'
+  $stepper-border-radius: 0!important
+  $stepper-elevation: 0!important
+  $stepper-header-elevation: 0!important
+  $stepper-header-height: 30px!important
 </style>
