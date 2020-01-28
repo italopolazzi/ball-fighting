@@ -5,21 +5,16 @@
     {{valids}}
     {{valid}}
     <v-card>
-      <v-card-text>
-        {{state}}
-      </v-card-text>
+      <v-card-text>{{state}}</v-card-text>
     </v-card>
     <v-stepper v-model="current_index" @change="validateAll">
       <!-- header -->
       <v-stepper-header>
-        <template>
-          <v-stepper-step
-            v-for="(register, index) in registers"
-            :key="index"
-            :complete="valids[index]"
-            editable
-            :step="index"
-          >Step {{index}}</v-stepper-step>
+        <template v-for="(register, index) in registers">
+          <v-stepper-step :key="index" :complete="valids[index]" :step="index" :alt-labels="true">
+            <div class="text-capitalize">{{stepLabel(register.name)}}</div>
+          </v-stepper-step>
+          <v-divider :key="register.name" v-if="index < Object.keys(registers).length-1"></v-divider>
         </template>
       </v-stepper-header>
       <!-- content -->
@@ -58,7 +53,7 @@ export default {
     };
   },
   mounted() {
-    this.validateAll()
+    this.validateAll();
   },
   methods: {
     play() {},
@@ -85,15 +80,18 @@ export default {
         return !rules || rules.every(r => r());
       });
       console.log(valids);
-      
+
       this.valids = valids;
+    },
+    stepLabel(register_name) {
+      return register_name.split("-register")[0];
     }
   },
   watch: {
     state: {
       deep: true,
       handler(val, old) {
-        if(val !== old){
+        if (val !== old) {
           this.validateAll();
         }
       }
