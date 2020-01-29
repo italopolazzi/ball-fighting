@@ -30,27 +30,33 @@ export default {
         choosed_level: null
     },
     mutations: {
-        SET_CHARACTER(state, { player_key, character }) {
+        SET_CHARACTER_FOR_PLAYER(state, { player_key, character }) {
             state.players[player_key].character = character;
             // console.log(state.players[player_key].character);
-
         },
-        SET_NICKNAME(state, { player_key, nickname }) {
+        SET_NICKNAME_FOR_PLAYER(state, { player_key, nickname }) {
             state.players[player_key].nickname = nickname;
         },
         SET_CHOOSED_LEVEL(state, level) {
             state.choosed_level = level;
+        },
+        SET_CONTROLS_FOR_PLAYER(state, { player_key, controls }) {
+            console.log({ player_key, controls });
+            state.players[player_key].controls = controls;
         }
     },
     actions: {
         setCharacterForPlayer({ commit }, { player_key, character }) {
-            commit("SET_CHARACTER", { player_key, character })
+            commit("SET_CHARACTER_FOR_PLAYER", { player_key, character })
         },
         setNicknameForPlayer({ commit }, { player_key, nickname }) {
-            commit("SET_NICKNAME", { player_key, nickname })
+            commit("SET_NICKNAME_FOR_PLAYER", { player_key, nickname })
         },
         setChoosedLevel({ commit }, level) {
             commit("SET_CHOOSED_LEVEL", level)
+        },
+        setControlsForPlayer({ commit }, { player_key, controls }) {
+            commit("SET_CONTROLS_FOR_PLAYER", { player_key, controls })
         },
     },
     getters: {

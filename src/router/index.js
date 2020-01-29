@@ -71,26 +71,26 @@ const routes = [{
             }
         ]
     },
-    // {
-    //     path: "/game",
-    //     component: () =>
-    //         import ( /* webpackChunkName: "game" */ "@/views/Game"),
-    //     meta: { protected: true },
-    //     children: [{
-    //             name: 'game-offline-single',
-    //             path: 'game-offline-single',
-    //             component: () =>
-    //                 import ( /* webpackChunkName: "game-offline-single" */ "@/views/Game/GameOfflineSingle")
-    //         },
-    //         {
-    //             name: 'game-offline-dual',
-    //             path: 'game-offline-dual',
-    //             component: () =>
-    //                 import ( /* webpackChunkName: "game-offline-dual" */ "@/views/Game/GameOfflineDual")
-    //         },
+    {
+        path: "/game",
+        component: () =>
+            import ( /* webpackChunkName: "game" */ "@/views/Game"),
+        meta: { protected: true },
+        children: [{
+                name: 'game-offline-single',
+                path: 'game-offline-single',
+                component: () =>
+                    import ( /* webpackChunkName: "game-offline-single" */ "@/views/Game/GameOfflineSingle")
+            },
+            {
+                name: 'game-offline-dual',
+                path: 'game-offline-dual',
+                component: () =>
+                    import ( /* webpackChunkName: "game-offline-dual" */ "@/views/Game/GameOfflineDual")
+            },
 
-    //     ]
-    // }
+        ]
+    }
 ];
 
 const router = new VueRouter({

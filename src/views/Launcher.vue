@@ -1,6 +1,6 @@
 <template>
   <div class="launcher">
-    <v-toolbar dense>
+    <v-toolbar dense flat>
       <MainMenu />
     </v-toolbar>
     <!-- CONTENT -->

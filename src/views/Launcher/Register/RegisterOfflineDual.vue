@@ -1,6 +1,5 @@
 <template>
   <div class="register-offline-dual">
-    
     <v-toolbar dense :color="color">
       <v-btn icon @click="prevStep">
         <v-icon>mdi-arrow-left</v-icon>
@@ -10,6 +9,7 @@
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn text @click="validateAll">Validate all</v-btn>
+      <v-btn text @click="play" :disabled="false">Play direct</v-btn>
       <v-btn text @click="play" :disabled="!valid">Play</v-btn>
     </v-toolbar>
     <v-stepper v-model="current_index">
@@ -40,6 +40,7 @@
 import PlayersRegister from "@/components/Register/PlayersRegister";
 import CharactersRegister from "@/components/Register/CharactersRegister";
 import LevelsRegister from "@/components/Register/LevelsRegister";
+import ControlersRegister from "@/components/Register/ControlersRegister";
 
 import { mapGetters } from "vuex";
 export default {
@@ -50,7 +51,12 @@ export default {
       required: false
     }
   },
-  components: { PlayersRegister, CharactersRegister, LevelsRegister },
+  components: {
+    ControlersRegister,
+    PlayersRegister,
+    CharactersRegister,
+    LevelsRegister
+  },
   computed: {
     ...mapGetters("register/dual", { state: "getState" }),
     current_component() {
@@ -64,14 +70,21 @@ export default {
     return {
       valids: [],
       current_index: 1,
-      registers: [CharactersRegister, LevelsRegister, PlayersRegister]
+      registers: [
+        ControlersRegister,
+        CharactersRegister,
+        LevelsRegister,
+        PlayersRegister
+      ]
     };
   },
   mounted() {
     this.validateAll();
   },
   methods: {
-    play() {},
+    play() {
+      this.$router.push({ name: "game-offline-dual" });
+    },
     nextStep() {
       this.validateAll();
       if (this.current_index === this.registers.length) {
