@@ -5,11 +5,14 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "game-offline-dual",
   methods: {
-    ...mapActions("game/dual", ["prepareForBattle"])
+    ...mapActions("game/dual", ["createBattle"])
+  },
+  computed: {
+    ...mapGetters("game/dual", {  })
   },
   data() {
     return {
@@ -17,7 +20,7 @@ export default {
     };
   },
   mounted() {
-    this.prepareForBattle(this.battle_container_id);
+    this.createBattle(this.battle_container_id);
   }
 };
 </script>

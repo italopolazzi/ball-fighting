@@ -9,7 +9,7 @@
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn text @click="validateAll">Validate all</v-btn>
-      <v-btn text @click="play" :disabled="false">Play direct</v-btn>
+      <!-- <v-btn text @click="play" :disabled="false">Play direct</v-btn> -->
       <v-btn text @click="play" :disabled="!valid">Play</v-btn>
     </v-toolbar>
     <v-stepper v-model="current_index">
@@ -107,8 +107,6 @@ export default {
         const rules = ref[0].rules;
         return !rules || rules.every(r => r());
       });
-      console.log(valids);
-
       this.valids = valids;
     },
     stepLabel(register_name) {
@@ -127,11 +125,3 @@ export default {
   }
 };
 </script>
-
-<style lang="sass">
-  // @import '~vuetify/src/styles/variables.sass'
-  $stepper-border-radius: 0!important
-  $stepper-elevation: 0!important
-  $stepper-header-elevation: 0!important
-  $stepper-header-height: 30px!important
-</style>

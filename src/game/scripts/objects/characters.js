@@ -9,19 +9,15 @@ import Cyan from "@/game/scripts/Characters/Cyan"
 import Blue from "@/game/scripts/Characters/Blue"
 import Red from "@/game/scripts/Characters/Red"
 
-const loadAllCharacters = () => {
-    return [
-        Teal,
-        Indigo,
-        Yellow,
-        Orange,
-        Green,
-        Purple,
-        Pink,
-        Cyan,
-        Blue,
-        Red
-    ]
+export default {
+    Teal,
+    Indigo,
+    Yellow,
+    Orange,
+    Green,
+    Purple,
+    Pink,
+    Cyan,
+    Blue,
+    Red
 }
-
-export default loadAllCharacters

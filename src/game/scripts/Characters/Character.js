@@ -16,7 +16,7 @@ import {
 
 
 class Character extends CanvasCircle {
-    constructor(id, color) {
+    constructor(id, color, canvas) {
         super(0, 0, CHARACTERS.DRAW_RADIUS, color)
         if (this.constructor === Character) {
             throw new TypeError('Abstract class "Character" cannot be instantiated directly.');
@@ -31,7 +31,7 @@ class Character extends CanvasCircle {
         this.life_points = this.life_points_initial
         this.effect = null
         this.player_owner = null
-        this.initial
+        this.setInitialPositionAtCanvas(canvas)
     }
 
     setInitialPositionAtCanvas(canvas) {

@@ -1,11 +1,9 @@
 import AgentPlayer from "@/game/scripts/Players/AgentPlayer"
 import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
 
-import loadAllCharacters from "@/game/scripts/functions/loadAllCharacters"
+import characters from "@/game/scripts/objects/characters"
 
 import { GAME_LEVELS } from "@/game/defaults/defaults"
-
-const all_characters = loadAllCharacters()
 
 export default {
     namespaced: true,
@@ -13,18 +11,18 @@ export default {
         players: {
             client: {
                 type: HumanPlayer,
-                nickname: "",
+                nickname: "tester1",
                 controls: null,
                 character: null
             },
             guest: {
                 type: HumanPlayer,
-                nickname: "",
+                nickname: "tester2",
                 controls: null,
                 character: null
             }
         },
-        available_characters: all_characters.map(c => c.info()),
+        available_characters: Object.values(characters).map(c => c.info()),
         available_levels: GAME_LEVELS,
         available_genomes: null,
         choosed_level: null
@@ -32,7 +30,6 @@ export default {
     mutations: {
         SET_CHARACTER_FOR_PLAYER(state, { player_key, character }) {
             state.players[player_key].character = character;
-            // console.log(state.players[player_key].character);
         },
         SET_NICKNAME_FOR_PLAYER(state, { player_key, nickname }) {
             state.players[player_key].nickname = nickname;
