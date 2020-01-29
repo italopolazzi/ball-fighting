@@ -9,12 +9,11 @@ import { mapActions, mapGetters } from "vuex";
 export default {
     namespaced: true,
     state: {
-        battle: null,
         results: null
     },
     mutations: {
-        SET_BATTLE(state, battle) {
-            state.battle = battle
+        SET_RESULTS(state, results) {
+            state.results = results
         }
     },
     actions: {
@@ -23,35 +22,33 @@ export default {
                 return characters[character_info.name]
             }
             const register = rootGetters["register/dual/getState"]
-
             const { client, guest } = register.players
 
             const ClientCharacter = getCharacterClass(client.character, characters)
             const GuestCharacter = getCharacterClass(guest.character, characters)
-
-            const client_controls = client.controls
-            const guest_controls = guest.controls
 
             const canvas = new BattleCanvas(battle_container_id)
 
             const client_character = new ClientCharacter(canvas);
             const guest_character = new GuestCharacter(canvas);
 
-            const client_player = new HumanPlayer(client_character, client_controls);
-            const guest_player = new HumanPlayer(guest_character, guest_controls);
+            const client_player = new HumanPlayer(client_character, client.controls);
+            const guest_player = new HumanPlayer(guest_character, guest.controls);
 
             const players = [client_player, guest_player]
 
             const battle = new BattleOfflineDualPlayer(players, canvas)
-            commit("SET_BATTLE", battle)
-            dispatch("startBattle")
+
+            dispatch("startBattle", battle)
         },
-        async startBattle({ commit, state }) {
-            const results = await state.battle.run()
+        async startBattle({ commit, state }, battle) {
+            const results = await battle.run()
+            commit("SET_RESULTS", results)
             console.log({ results });
+
         }
     },
     getters: {
-        getBattle: state => state.battle
+        getResults: state => state.results
     }
 }
