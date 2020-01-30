@@ -12,14 +12,14 @@ export default {
             client: {
                 type: HumanPlayer,
                 nickname: "tester1",
-                controls: null,
-                character: null
+                controls: { top: "w", right: "d", bottom: "s", left: "a" },
+                character: { name: "Yellow", color: "yellow", force: 3 }
             },
             guest: {
                 type: HumanPlayer,
                 nickname: "tester2",
-                controls: null,
-                character: null
+                controls: { top: "ArrowUp", right: "ArrowRight", bottom: "ArrowDown", left: "ArrowLeft" },
+                character: { name: "Indigo", color: "indigo", force: 3 }
             }
         },
         available_characters: Object.values(characters).map(c => c.info()),
@@ -80,6 +80,9 @@ export default {
         getAvailableLevels: state => state.available_levels,
         getCharacters: state => {
             return Object.values(state.players).map(p => p.character);
+        },
+        getPlayerCharacter: state => player_key => {
+            return state.players[player_key].character;
         },
         getNicknames: state => {
             return Object.values(state.players).map(p => p.nickname);

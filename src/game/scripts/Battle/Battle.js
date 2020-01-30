@@ -2,6 +2,8 @@ import generateRandomEffect from "@/game/scripts/functions/generateRandomEffect.
 import euclideanDistance from '@/game/scripts/functions/euclideanDistance.js'
 import Effect from "../Effects/Effect.js";
 
+import { VueEventBus } from '@/plugins/eventBus'
+
 import { BATTLE } from "@/game/defaults/defaults.js"
 
 class Battle {
@@ -27,6 +29,7 @@ class Battle {
                         return;
                     } else {
                         requestAnimationFrame(animate)
+                        VueEventBus.$emit("battleRunning", battle)
                         battle.updateGameElements()
                         battle.listenForPlayerControls()
                         battle.collideElements()
