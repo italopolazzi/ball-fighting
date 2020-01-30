@@ -41,10 +41,9 @@ export default {
 
             dispatch("startBattle", battle)
         },
-        async startBattle({ commit, state }, battle) {
+        async startBattle({ commit }, battle) {
             const results = await battle.run()
             commit("SET_RESULTS", results)
-            console.log({ results });
         }
     },
     getters: {

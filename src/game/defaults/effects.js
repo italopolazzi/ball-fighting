@@ -1,5 +1,5 @@
 const EFFECTS = {
-    DRAW_RADIUS: 3,
+    DRAW_RADIUS: 10,
     TYPES: {
         GOOD_TO_COLLECT: "GOOD_TO_COLLECT",
         BAD_TO_ATTACK: "BAD_TO_ATTACK",

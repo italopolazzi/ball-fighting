@@ -21,9 +21,9 @@ class Effect extends CanvasCircle {
     }
 
     draw(context) {
-        const { x, y } = this
-        context.font = `12px Arial`;
-        context.fillText(this.constructor.name, x, (y + (this.radius * 3)))
+        // const { x, y } = this
+        // context.font = `12px Arial`;
+        // context.fillText(this.constructor.name, x, (y + (this.radius * 3)))
         super.draw(context)
     }
     async apply(character) {

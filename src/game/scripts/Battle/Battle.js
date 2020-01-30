@@ -24,8 +24,8 @@ class Battle {
                 const animate = () => {
                     battle.canvas.clearBattleCanvas()
                     if (battle.battleEnded()) {
+                        // battle.drawResult()
                         resolve(battle.players)
-                        battle.drawResult()
                         return;
                     } else {
                         requestAnimationFrame(animate)
@@ -142,30 +142,30 @@ class Battle {
         })
     }
 
-    drawResult() {
-        const { context } = this.canvas
+    // drawResult() {
+    //     const { context } = this.canvas
 
-        this.players.forEach((player, i) => {
-            const font = {
-                size: 30,
-                family: "Arial",
-                color: "rbga(255,255,255,.1)"
-            }
-            const character = player.character
-            const chracter_color = character.color
-            const result = player.result
+    //     this.players.forEach((player, i) => {
+    //         const font = {
+    //             size: 30,
+    //             family: "Arial",
+    //             color: "rbga(255,255,255,.1)"
+    //         }
+    //         const character = player.character
+    //         const chracter_color = character.color
+    //         const result = player.result
 
-            let last_pos = 60 * (i + 1)
+    //         let last_pos = 60 * (i + 1)
 
-            context.fillStyle = font.color
+    //         context.fillStyle = font.color
 
-            context.font = `${font.size * 0.7}px ${font.family}`;
-            context.fillText(chracter_color, 10, last_pos += 20);
+    //         context.font = `${font.size * 0.7}px ${font.family}`;
+    //         context.fillText(chracter_color, 10, last_pos += 20);
 
-            context.font = `${font.size * 0.5}px ${font.family}`;
-            context.fillText(result, 10, last_pos += 20);
-        })
-    }
+    //         context.font = `${font.size * 0.5}px ${font.family}`;
+    //         context.fillText(result, 10, last_pos += 20);
+    //     })
+    // }
 }
 
 export default Battle
