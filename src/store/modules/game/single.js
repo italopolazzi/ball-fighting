@@ -1,8 +1,11 @@
 import BattleOfflineDualPlayer from "@/game/scripts/Battle/BattleOfflineDualPlayer"
 import BattleCanvas from "@/game/scripts/Canvas/BattleCanvas"
 import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
+import AgentPlayer from "@/game/scripts/Players/AgentPlayer"
 
 import characters from "@/game/scripts/objects/characters"
+
+import { mapActions, mapGetters } from "vuex";
 
 export default {
     namespaced: true,
