@@ -7,7 +7,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import KeysSelector from "@/components/Register/KeysSelector";
+import KeysSelector from "@/components/KeysSelector";
 
 export default {
   name: "controls-register",

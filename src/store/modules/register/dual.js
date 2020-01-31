@@ -1,3 +1,7 @@
+import PlayersRegister from "@/components/Register/PlayersRegister";
+import CharactersRegister from "@/components/Register/CharactersRegister";
+import ControlersRegister from "@/components/Register/ControlersRegister";
+
 import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
 
 import characters from "@/game/scripts/objects/characters"
@@ -5,6 +9,9 @@ import characters from "@/game/scripts/objects/characters"
 export default {
     namespaced: true,
     state: {
+        registers: [
+            ControlersRegister, CharactersRegister, PlayersRegister
+        ],
         players: {
             client: {
                 type: HumanPlayer,
@@ -45,6 +52,7 @@ export default {
         },
     },
     getters: {
+        getRegisters: state => state.registers,
         getPlayersByType: state => class_type => {
             const players = state.players
             const filtered = Object.keys(players).reduce((acc, key) => {

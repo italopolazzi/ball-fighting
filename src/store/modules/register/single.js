@@ -15,10 +15,10 @@ export default {
                 controls: { top: "w", right: "d", bottom: "s", left: "a" },
                 character: { name: "Yellow", color: "yellow", force: 3 }
             },
-            guest: {
-                type: HumanPlayer,
+            agent: {
+                type: AgentPlayer,
                 nickname: "tester2",
-                controls: { top: "ArrowUp", right: "ArrowRight", bottom: "ArrowDown", left: "ArrowLeft" },
+                controls: null,
                 character: { name: "Indigo", color: "indigo", force: 3 }
             }
         },

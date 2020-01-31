@@ -22,21 +22,21 @@ export default {
             const getCharacterClass = (character_info, characters) => {
                 return characters[character_info.name]
             }
-            const register = rootGetters["register/dual/getState"]
-            const { client, guest } = register.players
+            const register = rootGetters["register/single/getState"]
+            const { client, agent } = register.players
 
             const ClientCharacter = getCharacterClass(client.character, characters)
-            const GuestCharacter = getCharacterClass(guest.character, characters)
+            const AgentCharacter = getCharacterClass(agent.character, characters)
 
             const canvas = new BattleCanvas(battle_container_id)
 
             const client_character = new ClientCharacter(canvas);
-            const guest_character = new GuestCharacter(canvas);
+            const agent_character = new AgentCharacter(canvas);
 
             const client_player = new HumanPlayer(client_character, client.controls);
-            const guest_player = new HumanPlayer(guest_character, guest.controls);
+            const agent_player = new AgentPlayer(agent_character, agent.controls);
 
-            const players = [client_player, guest_player]
+            const players = [client_player, agent_player]
 
             const battle = new BattleOfflineDualPlayer(players, canvas)
 

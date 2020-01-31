@@ -25,7 +25,7 @@
         <!-- router-view -->
         <v-col cols="12" md="6">
           <v-slide-y-transition mode="out-in" appear>
-            <router-view :color="current_item.color" />
+            <router-view />
           </v-slide-y-transition>
         </v-col>
       </v-row>

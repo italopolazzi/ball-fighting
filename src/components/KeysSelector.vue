@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import KeyButtonSelector from "@/components/Register/KeyButtonSelector";
+import KeyButtonSelector from "@/components/KeyButtonSelector";
 export default {
   name: "keys-selector",
   components: { KeyButtonSelector },

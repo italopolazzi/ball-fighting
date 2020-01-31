@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import ItemGroupSelector from "@/components/Register/ItemGroupSelector";
+import ItemGroupSelector from "@/components/ItemGroupSelector";
 
 export default {
   name: "character-register",
