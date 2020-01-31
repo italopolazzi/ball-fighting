@@ -2,7 +2,7 @@
   <div class="controlers-register">
     <v-row>
       <v-col v-for="(player, key) in players" :key="key">
-        <ControlsRegister v-model="valids[key]" :player="{key, ...player}" />
+        <ControlsRegister v-model="valids[key]" :namespace="namespace" :player="{key, ...player}" />
       </v-col>
     </v-row>
   </div>
@@ -15,8 +15,11 @@ import ControlsRegister from "@/components/Register/ControlsRegister";
 export default {
   name: "controlers-register",
   components: { ControlsRegister },
-  computed: {
-    ...mapGetters("register/dual", { players: "getHumanPlayers" })
+  props: {
+    namespace: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {
@@ -27,6 +30,13 @@ export default {
           Object.values(this.players).length,
         () => Object.values(this.valids).every(v => v === true)
       ]
+    };
+  },
+  beforeCreate() {
+    const { namespace } = this.$options.propsData;
+    this.$options.computed = {
+      ...this.$options.computed,
+      ...mapGetters(`register/${namespace}`, { players: "getHumanPlayers" })
     };
   }
 };

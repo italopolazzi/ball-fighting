@@ -16,12 +16,13 @@ export default {
     player: {
       type: Object,
       required: true
+    },
+    namespace: {
+      type: String,
+      required: true
     }
   },
   computed: {
-    ...mapGetters("register/dual", { players: "getPlayers" }),
-    ...mapGetters("launcher", ["getPlayerControls"]),
-    ...mapGetters("launcher", { used_keys: "getUsedKeys" }),
     valid() {
       return !!this.value;
     },
@@ -34,12 +35,22 @@ export default {
       value: null
     };
   },
+  beforeCreate() {
+    const { namespace } = this.$options.propsData;
+    this.$options.computed = {
+      ...this.$options.computed,
+      ...mapGetters(`register/${namespace}`, { players: "getPlayers" }),
+      ...mapGetters("launcher", ["getPlayerControls"]),
+      ...mapGetters("launcher", { used_keys: "getUsedKeys" })
+    };
+    this.$options.methods = {
+      ...this.$options.methods,
+      ...mapActions(`register/${namespace}`, ["setControlsForPlayer"])
+    };
+  },
   created() {
     // starts value
     this.value = this.getPlayerControls(this.player.key);
-  },
-  methods: {
-    ...mapActions("register/dual", ["setControlsForPlayer"])
   },
   watch: {
     value(val) {

@@ -20,6 +20,10 @@ export default {
     player: {
       type: Object,
       required: true
+    },
+    namespace: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -30,8 +34,12 @@ export default {
       ]
     };
   },
-  computed: {
-    ...mapGetters("register/dual", { players: "getPlayers" })
+  beforeCreate() {
+    const { namespace } = this.$options.propsData;
+    this.$options.computed = {
+      ...this.$options.computed,
+      ...mapGetters(`register/${namespace}`, { players: "getPlayers" })
+    };
   },
   methods: {
     validateNickname() {
@@ -50,7 +58,7 @@ export default {
   },
   watch: {
     valid(val) {
-        this.$emit("input", val);
+      this.$emit("input", val);
     }
   }
 };

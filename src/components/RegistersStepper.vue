@@ -28,7 +28,7 @@
       </v-stepper-header>
       <!-- content -->
       <v-stepper-content v-for="(register, index) in registers" :key="index" :step="index + 1">
-        <component :is="register" :key="register.name" :ref="index" />
+        <component :is="register" :key="register.name" :namespace="namespace" :ref="index" />
       </v-stepper-content>
     </v-stepper>
   </div>
@@ -39,15 +39,12 @@ import { mapGetters } from "vuex";
 export default {
   name: "registers-stepper",
   props: {
-    module_key: {
+    namespace: {
       type: String,
       required: true
     }
   },
   computed: {
-    registers() {
-      return this.$store.getters[`register/${this.module_key}/getRegisters`];
-    },
     current_component() {
       return this.registers[this.current_index];
     },
@@ -61,12 +58,19 @@ export default {
       current_index: 1
     };
   },
+  beforeCreate() {
+    const { namespace } = this.$options.propsData;
+    this.$options.computed = {
+      ...this.$options.computed,
+      ...mapGetters(`register/${namespace}`, { registers: "getRegisters" })
+    };    
+  },
   mounted() {
     this.validateAll();
   },
   methods: {
     register() {
-      this.$router.push({ name: `game-offline-${this.module_key}` });
+      this.$router.push({ name: `game-offline-${this.namespace}` });
     },
     nextStep() {
       this.validateAll();

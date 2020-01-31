@@ -1,6 +1,6 @@
 <template>
   <div class="register-offline-dual">
-    <RegistersStepper :module_key="module_key" />
+    <RegistersStepper :namespace="namespace" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      module_key: "dual"
+      namespace: "dual"
     };
   }
 };

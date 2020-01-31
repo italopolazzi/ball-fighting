@@ -2,7 +2,7 @@
   <div class="levels-register">
     <v-row>
       <v-col>
-        <LevelRegister v-model="valid" />
+        <LevelRegister v-model="valid" :namespace="namespace" />
       </v-col>
     </v-row>
   </div>
@@ -15,8 +15,11 @@ import LevelRegister from "@/components/Register/LevelRegister";
 export default {
   name: "levels-register",
   components: { LevelRegister },
-  computed: {
-    ...mapGetters("register/dual", { players: "getHumanPlayers" })
+  props: {
+    namespace: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {

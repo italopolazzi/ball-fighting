@@ -25,16 +25,27 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "level-register",
   props: {
-    value: { required: true }
+    value: { required: true },
+    namespace: {
+      type: String,
+      required: true
+    }
   },
-  computed: {
-    ...mapGetters("register/dual", {
-      available_levels: "getAvailableLevels",
-      choosed_level: "getChoosedLevel"
-    })
+  beforeCreate() {
+    const { namespace } = this.$options.propsData;
+    this.$options.computed = {
+      ...this.$options.computed,
+      ...mapGetters(`register/${namespace}`, {
+        available_levels: "getAvailableLevels",
+        choosed_level: "getChoosedLevel"
+      })
+    };
+    this.$options.methods = {
+      ...this.$options.methods,
+      ...mapActions(`register/${namespace}`, ["setChoosedLevel"])
+    };
   },
   methods: {
-    ...mapActions("register/dual", ["setChoosedLevel"]),
     setLevel(level) {
       this.setChoosedLevel(level);
       this.value = !!level;

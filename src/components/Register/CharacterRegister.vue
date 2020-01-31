@@ -19,6 +19,15 @@ export default {
     player: {
       type: Object,
       required: true
+    },
+    namespace: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    valid() {
+      return this.player.character;
     }
   },
   data() {
@@ -26,18 +35,20 @@ export default {
       value: null
     };
   },
-  computed: {
-    ...mapGetters("register/dual", {
-      available_characters: "getAvailableCharacters",
-      characters: "getCharacters",
-      state: "getState"
-    }),
-    valid() {
-      return this.player.character;
-    }
-  },
-  methods: {
-    ...mapActions("register/dual", ["setCharacterForPlayer"])
+  beforeCreate() {
+    const { namespace } = this.$options.propsData;
+    this.$options.computed = {
+      ...this.$options.computed,
+      ...mapGetters(`register/${namespace}`, {
+        available_characters: "getAvailableCharacters",
+        characters: "getCharacters",
+        state: "getState"
+      })
+    };
+    this.$options.methods = {
+      ...this.$options.methods,
+      ...mapActions(`register/${namespace}`, ["setCharacterForPlayer"])
+    };
   },
   watch: {
     value(val) {
@@ -45,8 +56,8 @@ export default {
       const character = val;
       this.setCharacterForPlayer({ player_key, character });
     },
-    valid(val) {      
-        this.$emit("input", !!val);
+    valid(val) {
+      this.$emit("input", !!val);
     }
   }
 };
