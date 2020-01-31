@@ -12,7 +12,7 @@ import {
     BOTTOM_FLAG,
     LEFT_FLAG,
     RIGHT_FLAG
-} from "@/game/defaults/defaults.js"
+} from "@/game/defaults/index.js"
 
 
 class Character extends CanvasCircle {

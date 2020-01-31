@@ -1,6 +1,6 @@
 import EffectTimeout from "@/game/scripts/Effects/EffectTimeout.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class Turtle extends EffectTimeout {
     constructor(x, y) {

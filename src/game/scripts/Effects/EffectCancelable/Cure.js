@@ -1,6 +1,6 @@
 import EffectCancelable from "@/game/scripts/Effects/EffectCancelable.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class Cure extends EffectCancelable {
     constructor(x, y) {

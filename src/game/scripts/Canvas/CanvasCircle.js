@@ -1,6 +1,6 @@
 import CanvasDrawableElement from "./CanvasDrawableElement.js";
 
-import { CANVAS_CIRCLE } from "@/game/defaults/defaults.js"
+import { CANVAS_CIRCLE } from "@/game/defaults/index.js"
 
 class CanvasCircle extends CanvasDrawableElement {
     constructor(x, y, radius, color, anticlockwise = true, mode = "fill") {

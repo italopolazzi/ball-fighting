@@ -1,6 +1,6 @@
 import EffectTransferable from "@/game/scripts/Effects/EffectTransferable.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class Benediction extends EffectTransferable {
     constructor(x, y) {

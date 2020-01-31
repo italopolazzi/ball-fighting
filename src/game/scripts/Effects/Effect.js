@@ -1,6 +1,6 @@
 import CanvasCircle from "@/game/scripts/Canvas/CanvasCircle.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class Effect extends CanvasCircle {
     constructor(x, y, color) {

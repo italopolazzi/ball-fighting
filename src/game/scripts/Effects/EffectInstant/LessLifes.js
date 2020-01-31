@@ -1,6 +1,6 @@
 import EffectInstant from "@/game/scripts/Effects/EffectInstant.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class LessLifes extends EffectInstant {
     constructor(x, y) {

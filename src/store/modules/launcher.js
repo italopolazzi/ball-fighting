@@ -1,4 +1,4 @@
-import { CONTROLS } from "@/game/defaults/defaults.js"
+import { CONTROLS } from "@/game/defaults/index.js"
 
 export default {
     namespaced: true,

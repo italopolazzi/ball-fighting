@@ -1,9 +1,12 @@
+// classes players
+
+import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
+// registers
 import PlayersRegister from "@/components/Register/PlayersRegister";
 import CharactersRegister from "@/components/Register/CharactersRegister";
 import ControlersRegister from "@/components/Register/ControlersRegister";
 
-import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
-
+// objects
 import characters from "@/game/scripts/objects/characters"
 
 export default {

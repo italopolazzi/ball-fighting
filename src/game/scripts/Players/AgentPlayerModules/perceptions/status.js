@@ -1,4 +1,4 @@
-import { CHARACTERS } from "@/game/defaults/defaults.js"
+import { CHARACTERS } from "@/game/defaults/index.js"
 
 const lifeScore = player => {
     const player_lifes = player.character.lifes

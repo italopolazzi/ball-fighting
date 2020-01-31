@@ -1,6 +1,6 @@
 import euclideanDistance from '@/game/scripts/functions/euclideanDistance.js'
 
-import { PLAYERS } from "@/game/defaults/defaults.js"
+import { PLAYERS } from "@/game/defaults/index.js"
 
 export default {
     distanceBetweenRadius(current_distance, object_size) {

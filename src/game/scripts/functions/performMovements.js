@@ -3,7 +3,7 @@ import {
     LEFT_FLAG,
     BOTTOM_FLAG,
     RIGHT_FLAG
-} from "@/game/defaults/defaults.js"
+} from "@/game/defaults/index.js"
 
 export const performMovements = (character, movements_to_perform) => {
     if (movements_to_perform.includes(TOP_FLAG)) character.moveY(TOP_FLAG)

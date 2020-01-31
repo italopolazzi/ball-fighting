@@ -1,6 +1,6 @@
 import EffectInfectious from "@/game/scripts/Effects/EffectInfectious.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class Virus extends EffectInfectious {
     constructor(x, y) {

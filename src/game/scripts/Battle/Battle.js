@@ -4,7 +4,7 @@ import Effect from "../Effects/Effect.js";
 
 import { VueEventBus } from '@/plugins/eventBus'
 
-import { BATTLE } from "@/game/defaults/defaults.js"
+import { BATTLE } from "@/game/defaults/index.js"
 
 class Battle {
     constructor(players, canvas) {

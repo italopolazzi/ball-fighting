@@ -1,15 +1,21 @@
+// classes register
 import PlayersRegister from "@/components/Register/PlayersRegister";
 import CharactersRegister from "@/components/Register/CharactersRegister";
 import ControlersRegister from "@/components/Register/ControlersRegister";
 import LevelsRegister from "@/components/Register/LevelsRegister";
 
-
+// classes players
 import AgentPlayer from "@/game/scripts/Players/AgentPlayer"
 import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
 
+// objects
 import characters from "@/game/scripts/objects/characters"
 
-import { GAME_LEVELS } from "@/game/defaults/defaults"
+// functions
+import loadGenomesPopulation from "@/game/scripts/functions/loadGenomesPopulation"
+
+// constants
+import { GAME_LEVELS, POPULATION_AMOUNT } from "@/game/defaults/index"
 
 export default {
     namespaced: true,
@@ -33,7 +39,7 @@ export default {
         },
         available_characters: Object.values(characters).map(c => c.info()),
         available_levels: GAME_LEVELS,
-        available_genomes: null,
+        available_genomes: loadGenomesPopulation(POPULATION_AMOUNT),
         choosed_level: null
     },
     mutations: {
@@ -47,7 +53,6 @@ export default {
             state.choosed_level = level;
         },
         SET_CONTROLS_FOR_PLAYER(state, { player_key, controls }) {
-            console.log({ player_key, controls });
             state.players[player_key].controls = controls;
         }
     },
@@ -58,7 +63,17 @@ export default {
         setNicknameForPlayer({ commit }, { player_key, nickname }) {
             commit("SET_NICKNAME_FOR_PLAYER", { player_key, nickname })
         },
-        setChoosedLevel({ commit }, level) {
+        setChoosedLevel({ commit, state }, level) {
+            const random_genome_index = Math.floor(Math.random() * POPULATION_AMOUNT)
+            const random_genome = state.available_genomes[random_genome_index]
+
+            Object.keys(state.players).forEach(player_key => {
+                const player = state.players[player_key]
+                const controls = random_genome
+                if (player.type === AgentPlayer) {
+                    commit("SET_CONTROLS_FOR_PLAYER", { player_key, controls })
+                }
+            })
             commit("SET_CHOOSED_LEVEL", level)
         },
         setControlsForPlayer({ commit }, { player_key, controls }) {
@@ -88,6 +103,7 @@ export default {
         getChoosedLevel: state => state.choosed_level,
         getAvailableCharacters: state => state.available_characters,
         getAvailableLevels: state => state.available_levels,
+        getAvailableGenomes: state => state.available_genomes,
         getCharacters: state => {
             return Object.values(state.players).map(p => p.character);
         },

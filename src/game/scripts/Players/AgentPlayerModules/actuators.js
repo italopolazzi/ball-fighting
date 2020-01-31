@@ -5,7 +5,7 @@ import {
     LEFT_FLAG,
     BOTTOM_FLAG,
     RIGHT_FLAG
-} from "@/game/defaults/defaults.js"
+} from "@/game/defaults/index.js"
 
 const actuators = {
     chaseTheEffect() {

@@ -1,11 +1,15 @@
-import BattleOfflineDualPlayer from "@/game/scripts/Battle/BattleOfflineDualPlayer"
+// classes battle
+import BattleOfflineSinglePlayer from "@/game/scripts/Battle/BattleOfflineSinglePlayer"
+
+// classes canvas
 import BattleCanvas from "@/game/scripts/Canvas/BattleCanvas"
+
+// classes players
 import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
 import AgentPlayer from "@/game/scripts/Players/AgentPlayer"
 
+// objects
 import characters from "@/game/scripts/objects/characters"
-
-import { mapActions, mapGetters } from "vuex";
 
 export default {
     namespaced: true,
@@ -38,7 +42,7 @@ export default {
 
             const players = [client_player, agent_player]
 
-            const battle = new BattleOfflineDualPlayer(players, canvas)
+            const battle = new BattleOfflineSinglePlayer(players, canvas)
 
             dispatch("startBattle", battle)
         },

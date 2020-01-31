@@ -1,6 +1,6 @@
 import Effect from "@/game/scripts/Effects/Effect.js";
 
-import { EFFECTS } from "@/game/defaults/defaults.js"
+import { EFFECTS } from "@/game/defaults/index.js"
 
 class EffectTimeout extends Effect {
     constructor(x, y, color) {

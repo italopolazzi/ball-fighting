@@ -1,7 +1,13 @@
+// classes battle
 import BattleOfflineDualPlayer from "@/game/scripts/Battle/BattleOfflineDualPlayer"
+
+// classes canvas
 import BattleCanvas from "@/game/scripts/Canvas/BattleCanvas"
+
+// classes players
 import HumanPlayer from "@/game/scripts/Players/HumanPlayer"
 
+// objects
 import characters from "@/game/scripts/objects/characters"
 
 export default {

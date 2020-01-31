@@ -2,7 +2,7 @@ import Player from './Player.js'
 
 import { singlePlayerMovementEngine } from "@/game/scripts/engines/engines.js"
 
-import { PLAYERS } from "@/game/defaults/defaults.js"
+import { PLAYERS } from "@/game/defaults/index.js"
 
 class HumanPlayer extends Player {
     constructor(character, controls) {

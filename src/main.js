@@ -1,4 +1,4 @@
-import '@/game/defaults/defaults.js'
+import '@/game/defaults/index.js'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
