@@ -18,6 +18,7 @@ class BattleCanvas {
         this.setupCanvasElement()
         this.appendCanvasInContainer()
         this.getCanvasContext()
+        this.listenForResize()
     }
 
     defineContainer(container_id) {
@@ -26,8 +27,10 @@ class BattleCanvas {
 
     setupWidthAndHeight() {
         const { width, height } = this.container.getBoundingClientRect();
-        this.width = width || window.innerWidth
-        this.height = height || window.innerHeight
+        const window_inner_width = window.innerWidth
+        const window_inner_height = window.innerHeight
+        this.width = window_inner_width || width
+        this.height = window_inner_height || height
     }
 
     setupCanvasElement() {
@@ -43,6 +46,17 @@ class BattleCanvas {
 
     getCanvasContext() {
         this.context = this.canvas.getContext("2d")
+    }
+
+    listenForResize() {
+        const $ = this
+        window.addEventListener("resize", e => {
+            const target_window = e.target
+            const window_inner_width = target_window.innerWidth
+            const window_inner_height = target_window.innerHeight
+            $.canvas.width = window_inner_width
+            $.canvas.height = window_inner_height
+        })
     }
 
     drawElements(elements) {

@@ -1,7 +1,7 @@
 <template>
   <div class="scores-container">
-    <v-container fluid class="fill-height">
-      <v-row class="d-flex justify-between align-center">
+    <v-container fluid class="fill-height pa-0">
+      <v-row class="d-flex justify-between align-center" no-gutters>
         <v-col
           v-for="(player, player_index) in players"
           :key="player_index"
@@ -31,5 +31,7 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style lang="sass" scoped>
+.menu
+  z-index:1
+</style>>

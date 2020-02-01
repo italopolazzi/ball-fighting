@@ -1,24 +1,46 @@
 <template>
   <div class="game-offline">
-    <div v-if="loading" class="loader">
+
+    <div v-if="loading">
       <v-progress-linear indeterminate color="green" />
     </div>
-    <div v-if="battle" class="score">
-      <ScoresContainer :players="players" />
-      <v-btn @click="play">Play Again</v-btn>
-      <v-btn :to="{name:'launcher-hall'}">Exit to launcher</v-btn>
+
+    <div v-if="battle">
+      <div class="overlay">
+        <v-container fluid class="fill-height">
+          <v-row class="half-height" justify="start" no-gutters>
+            <v-col>
+              <ScoresContainer :players="players" />
+            </v-col>
+          </v-row>
+
+          <v-row class="half-height" justify="end" no-gutters>
+            <v-col :cols="4" class="d-flex align-end justify-end">
+              <v-menu offset-overflow>
+                <template #activator="{on}">
+                  <v-btn color="red" fab v-on="on">
+                    <v-icon>mdi-dots-vertical</v-icon>
+                  </v-btn>
+                </template>
+                <GameMenu />
+              </v-menu>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
     </div>
-    <div id="battle_container_id"></div>
+    <div id="container"></div>
   </div>
 </template>
 
 <script>
+import GameMenu from "@/components/Game/GameMenu";
 import ScoresContainer from "@/components/Game/ScoresContainer";
 import { VueEventBus } from "@/plugins/eventBus";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "game-offline",
-  components: { ScoresContainer },
+  components: { ScoresContainer, GameMenu },
   computed: {
     players() {
       return this.battle.players;
@@ -29,14 +51,14 @@ export default {
   },
   data() {
     return {
-      battle_container_id: "battle_container_id",
-      battle: null
+      container: "container",
+      battle: null,
+      no_gutters: true,
+      dense: false
     };
   },
   beforeCreate() {
-    const namespace = this.$route.params.namespace
-    console.log(namespace);
-    
+    const namespace = this.$route.params.namespace;
     this.$options.computed = {
       ...this.$options.computed,
       ...mapGetters(`game/${namespace}`, { battle_results: "getBattleResults" })
@@ -51,7 +73,7 @@ export default {
   },
   methods: {
     play() {
-      this.createBattle(this.battle_container_id);
+      this.createBattle(this.container);
 
       VueEventBus.$on("battleRunning", value => {
         this.battle = value;
@@ -63,16 +85,21 @@ export default {
 
 <style lang="sass" scoped>
 
-body
-  overflow: hidden
+.half-height
+  height: 50%
 
-.score
+.overlay
   position: absolute
   top: 0
   left: 0
-  right: 0
+  width: 100vw
+  height: 100vh
+  z-index: 1
 
-.translucent
-  opacity: 0.2
+.linha
+  background: red
+
+.coluna
+  background: blue
 
 </style>
