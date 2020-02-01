@@ -121,22 +121,22 @@ class Battle {
         const losers = this.players.filter(player => player.character.lifes === 0)
 
         if (losers.length) {
-            this.mountResult({ losers })
+            this.mountResults({ losers })
             return true
         }
         return false
     }
 
-    mountResult({ losers }) {
+    mountResults({ losers }) {
         const tied = losers.length === this.players.length
         this.players.forEach(player => {
             if (tied) {
-                player.result = BATTLE.PLAYER_TIED_FLAG
+                player.results.tied++
             } else {
                 if (losers.includes(player)) {
-                    player.result = BATTLE.PLAYER_LOSE_FLAG
+                    player.results.lose++
                 } else {
-                    player.result = BATTLE.PLAYER_WIN_FLAG
+                    player.results.win++
                 }
             }
         })
@@ -153,7 +153,7 @@ class Battle {
     //         }
     //         const character = player.character
     //         const chracter_color = character.color
-    //         const result = player.result
+    //         const results = player.results
 
     //         let last_pos = 60 * (i + 1)
 
@@ -163,7 +163,7 @@ class Battle {
     //         context.fillText(chracter_color, 10, last_pos += 20);
 
     //         context.font = `${font.size * 0.5}px ${font.family}`;
-    //         context.fillText(result, 10, last_pos += 20);
+    //         context.fillText(results, 10, last_pos += 20);
     //     })
     // }
 }
