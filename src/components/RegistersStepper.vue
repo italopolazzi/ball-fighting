@@ -71,17 +71,23 @@ export default {
   methods: {
     register() {
       const { namespace } = this;
-      const url = this.$router.resolve({
+      const url = this.$router.push({
         name: "game-offline",
         params: { namespace }
       });
 
-      const config = {
-        href: url.href,
-        target: "_blank",
-        options: `toolbar=no,scrollbars=no,resizable=no,top=0,left=0,width=${screen.width},height=${screen.height}`
-      };
-      const popup = window.open(config.href, config.target, config.options);
+      // const { namespace } = this;
+      // const url = this.$router.resolve({
+      //   name: "game-offline",
+      //   params: { namespace }
+      // });
+
+      // const config = {
+      //   href: url.href,
+      //   target: "_blank",
+      //   options: `toolbar=no,scrollbars=no,resizable=no,top=0,left=0,width=${screen.width},height=${screen.height}`
+      // };
+      // const popup = window.open(config.href, config.target, config.options);
     },
     nextStep() {
       this.validateAll();

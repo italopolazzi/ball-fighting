@@ -2,6 +2,23 @@
   <div class="game-menu">
     <v-card>
       <v-card-text>
+        <div class="overline mt-2">{{ namespace }}</div>
+        <v-row>
+          <v-col>
+            <v-btn icon @click="fullscreenToogle">
+              <v-icon>mdi-stop</v-icon>
+            </v-btn>
+
+            <v-btn icon @click="fullscreenToogle">
+              <v-icon>mdi-pause</v-icon>
+            </v-btn>
+
+            <v-btn icon @click="fullscreenToogle">
+              <v-icon>mdi-play</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+
         <div class="overline mt-2">Display</div>
         <v-row>
           <v-col>
@@ -54,6 +71,12 @@
 <script>
 export default {
   name: "game-menu",
+  props: {
+    namespace: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     fullscreen_icon() {
       return this.fullscreen ? "mdi-fullscreen-exit" : "mdi-fullscreen";

@@ -1,6 +1,5 @@
 <template>
   <div class="game-offline">
-
     <div v-if="loading">
       <v-progress-linear indeterminate color="green" />
     </div>
@@ -22,7 +21,7 @@
                     <v-icon>mdi-dots-vertical</v-icon>
                   </v-btn>
                 </template>
-                <GameMenu />
+                <GameMenu :namespace="$route.params.namespace" />
               </v-menu>
             </v-col>
           </v-row>
