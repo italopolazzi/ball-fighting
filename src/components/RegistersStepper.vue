@@ -63,14 +63,15 @@ export default {
     this.$options.computed = {
       ...this.$options.computed,
       ...mapGetters(`register/${namespace}`, { registers: "getRegisters" })
-    };    
+    };
   },
   mounted() {
     this.validateAll();
   },
   methods: {
     register() {
-      this.$router.push({ name: `game-offline-${this.namespace}` });
+      const { namespace } = this;
+      this.$router.push({ name: "game-offline", params: { namespace } });
     },
     nextStep() {
       this.validateAll();

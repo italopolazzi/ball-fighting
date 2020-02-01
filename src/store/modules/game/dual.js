@@ -13,11 +13,11 @@ import characters from "@/game/scripts/objects/characters"
 export default {
     namespaced: true,
     state: {
-        results: null
+        battle_results: null
     },
     mutations: {
-        SET_RESULTS(state, results) {
-            state.results = results
+        SET_BATTLE_RESULTS(state, battle_results) {
+            state.battle_results = battle_results
         }
     },
     actions: {
@@ -46,11 +46,11 @@ export default {
             dispatch("startBattle", battle)
         },
         async startBattle({ commit }, battle) {
-            const results = await battle.run()
-            commit("SET_RESULTS", results)
+            const battle_results = await battle.run()
+            commit("SET_BATTLE_RESULTS", battle_results)
         }
     },
     getters: {
-        getResults: state => state.results
+        getBattleResults: state => state.battle_results
     }
 }

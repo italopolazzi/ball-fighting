@@ -19,18 +19,11 @@ const routes = [{
                 component: () =>
                     import ( /* webpackChunkName: "launcher-register" */ "@/views/Launcher/LauncherRegister"),
                 children: [{
-                        name: "register-offline-single",
-                        path: "/register-offline-single",
-                        component: () =>
-                            import ( /* webpackChunkName: "register-offline-single" */ "@/views/Launcher/Register/RegisterOfflineSingle")
-                    },
-                    {
-                        name: "register-offline-dual",
-                        path: "/register-offline-dual",
-                        component: () =>
-                            import ( /* webpackChunkName: "register-offline-dual" */ "@/views/Launcher/Register/RegisterOfflineDual")
-                    }
-                ]
+                    name: "register-offline",
+                    path: "register-offline/:namespace",
+                    component: () =>
+                        import ( /* webpackChunkName: "register-offline" */ "@/views/Launcher/Register/RegisterOffline")
+                }]
             },
             {
                 name: "launcher-about",
@@ -72,24 +65,17 @@ const routes = [{
         ]
     },
     {
+        name: "game",
         path: "/game",
         component: () =>
             import ( /* webpackChunkName: "game" */ "@/views/Game"),
         meta: { protected: true },
         children: [{
-                name: 'game-offline-single',
-                path: 'game-offline-single',
-                component: () =>
-                    import ( /* webpackChunkName: "game-offline-single" */ "@/views/Game/GameOfflineSingle")
-            },
-            {
-                name: 'game-offline-dual',
-                path: 'game-offline-dual',
-                component: () =>
-                    import ( /* webpackChunkName: "game-offline-dual" */ "@/views/Game/GameOfflineDual")
-            },
-
-        ]
+            name: 'game-offline',
+            path: 'game-offline/:namespace',
+            component: () =>
+                import ( /* webpackChunkName: "game-offline" */ "@/views/Game/GameOffline")
+        }]
     }
 ];
 

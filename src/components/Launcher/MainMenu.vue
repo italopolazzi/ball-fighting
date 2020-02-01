@@ -5,9 +5,9 @@
         <v-icon>mdi-home</v-icon>
       </v-btn>
     </v-slide-x-transition>
-    <v-btn text to="launcher-register">Play</v-btn>
-    <v-btn text to="launcher-about">About</v-btn>
-    <v-btn text to="launcher-options">Options</v-btn>
+    <v-btn text :to="{name: 'launcher-register'}">Play</v-btn>
+    <v-btn text :to="{name: 'launcher-about'}">About</v-btn>
+    <v-btn text :to="{name: 'launcher-options'}">Options</v-btn>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="register-offline-dual">
+  <div class="register-offline-single">
     <RegistersStepper :namespace="namespace" />
   </div>
 </template>
@@ -7,14 +7,14 @@
 <script>
 import RegistersStepper from "@/components/RegistersStepper";
 export default {
-  name: "register-offline-dual",
+  name: "register-offline-single",
   components: {
     RegistersStepper
   },
-  data() {
-    return {
-      namespace: "dual"
-    };
+  computed: {
+    namespace() {
+      return this.$route.params.namespace;
+    }
   }
 };
 </script>
