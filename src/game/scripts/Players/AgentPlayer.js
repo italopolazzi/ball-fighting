@@ -2,8 +2,8 @@ import Player from './Player.js'
 import agent_modules from './AgentPlayerModules/index.js'
 
 class AgentPlayer extends Player {
-    constructor(character, genome) {
-        super(character)
+    constructor(character, genome, nickname = "agent_player") {
+        super(character, nickname)
         this.opponent = null
         this.environment = null
         this.brain = genome

@@ -13,7 +13,21 @@ import characters from "@/game/scripts/objects/characters"
 export default {
     namespaced: true,
     state: {
-        battle_results: null
+        battle_results: null,
+        players: {
+            client: {
+                type: HumanPlayer,
+                nickname: "tester1",
+                controls: { top: "w", right: "d", bottom: "s", left: "a" },
+                character: { name: "Yellow", color: "yellow", force: 3 }
+            },
+            guest: {
+                type: HumanPlayer,
+                nickname: "tester2",
+                controls: { top: "ArrowUp", right: "ArrowRight", bottom: "ArrowDown", left: "ArrowLeft" },
+                character: { name: "Indigo", color: "indigo", force: 3 }
+            }
+        }
     },
     mutations: {
         SET_BATTLE_RESULTS(state, battle_results) {
@@ -21,7 +35,7 @@ export default {
         }
     },
     actions: {
-        createBattle({ commit, rootGetters, dispatch }, battle_container_id) {
+        createBattle({ commit, rootGetters, dispatch }, container) {
             const getCharacterClass = (character_info, characters) => {
                 return characters[character_info.name]
             }
@@ -31,13 +45,13 @@ export default {
             const ClientCharacter = getCharacterClass(client.character, characters)
             const GuestCharacter = getCharacterClass(guest.character, characters)
 
-            const canvas = new BattleCanvas(battle_container_id)
+            const canvas = new BattleCanvas(container)
 
             const client_character = new ClientCharacter(canvas);
             const guest_character = new GuestCharacter(canvas);
 
-            const client_player = new HumanPlayer(client_character, client.controls);
-            const guest_player = new HumanPlayer(guest_character, guest.controls);
+            const client_player = new HumanPlayer(client_character, client.controls, client.nickname);
+            const guest_player = new HumanPlayer(guest_character, guest.controls, guest.nickname);
 
             const players = [client_player, guest_player]
 

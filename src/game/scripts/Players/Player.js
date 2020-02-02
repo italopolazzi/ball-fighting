@@ -1,6 +1,7 @@
 class Player {
-    constructor(character) {
+    constructor(character, nickname) {
         this.character = character
+        this.nickname = nickname
         this.results = {
             win: 0,
             tied: 0,

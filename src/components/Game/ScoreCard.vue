@@ -3,15 +3,15 @@
     <v-card min-width="300" flat color="transparent">
       <v-card-text>
         <v-row>
-          <v-col class="d-flex justify-center">
+          <v-col v-if="player.constructor" class="d-flex justify-center" :title="`${player.nickname} (${player.constructor.name})`">
             <v-slide-y-transition mode="out-in" appear>
               <v-icon
-                v-if="player.constructor"
+                
                 :color="player.character.id"
               >{{ player.constructor.name === 'HumanPlayer' ? 'mdi-emoticon' : 'mdi-robot'}}</v-icon>
             </v-slide-y-transition>
           </v-col>
-          <v-col class="d-flex justify-center">
+          <v-col class="d-flex justify-center" :title="`lifes (${player.character.lifes})`">
             <v-slide-y-transition mode="out-in" appear group>
               <v-icon
                 v-for="(heart, heart_index) in total_lifes"
@@ -20,7 +20,7 @@
               >{{ player.character.lifes >= (heart_index + 1) ? 'mdi-heart' : 'mdi-heart-broken'}}</v-icon>
             </v-slide-y-transition>
           </v-col>
-          <v-col class="d-flex justify-center">
+          <v-col class="d-flex justify-center" :title="`effect`">
             <v-slide-y-transition mode="out-in" appear>
               <v-icon
                 :key="player.character.effect ? player.character.effect.color : ''"
@@ -31,7 +31,7 @@
         </v-row>
 
         <v-row>
-          <v-col>
+          <v-col :title="`life points (${player.character.life_points})`">
             <v-progress-linear
               :color="player.character.life_points <= 20 ? 'red' : 'green'"
               :size="60"
@@ -47,7 +47,7 @@
             v-for="(score, score_index) in total_score"
             :key="score_index"
             class="d-flex justify-center"
-            :title="score.result"
+            :title="score.result_key"
           >
             <div class="d-flex flex-column">
               <v-icon>{{ score.icon }}</v-icon>
