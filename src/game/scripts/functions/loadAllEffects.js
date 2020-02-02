@@ -28,7 +28,7 @@ const loadAllEffects = () => {
         Revival,
         Bolt,
         Ice,
-        Invisible,
+        // Invisible,
         Turtle,
         Curse,
         Benediction

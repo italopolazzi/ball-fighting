@@ -40,7 +40,7 @@ export default {
         available_characters: Object.values(characters).map(c => c.info()),
         available_levels: GAME_LEVELS,
         available_genomes: loadGenomesPopulation(POPULATION_AMOUNT),
-        choosed_level: null
+        choosed_level: 1
     },
     mutations: {
         SET_CHARACTER_FOR_PLAYER(state, { player_key, character }) {
