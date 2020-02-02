@@ -8,8 +8,30 @@
       <div class="overlay">
         <v-container fluid class="fill-height">
           <v-row class="half-height" justify="start" no-gutters>
-            <v-col>
+            <v-col :cols="12">
               <ScoresContainer :players="players" />
+            </v-col>
+            <v-col v-if="battle_results" :cols="12" class="d-flex align-start justify-center">
+              <v-container fluid class="pa-0">
+                <v-row no-gutters>
+                  <v-col cols="0" md="4"></v-col>
+                  <v-col cols="12" md="4">
+                    <v-card tile color="red">
+                      <v-card-title>Results</v-card-title>
+                      <v-card-actions>
+                        <v-btn text :to="{name: 'launcher-register'}">
+                          <v-icon left>mdi-backburger</v-icon>Exit
+                        </v-btn>
+                        <v-spacer></v-spacer>
+                        <v-btn text @click="playAgain" color="white">
+                          <v-icon left>mdi-restart</v-icon>Play again
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="0" md="4"></v-col>
+                </v-row>
+              </v-container>
             </v-col>
           </v-row>
 
@@ -64,7 +86,7 @@ export default {
     };
     this.$options.methods = {
       ...this.$options.methods,
-      ...mapActions(`game/${namespace}`, ["createBattle"])
+      ...mapActions(`game/${namespace}`, ["createBattle", "playAgain"])
     };
   },
   mounted() {
@@ -72,11 +94,17 @@ export default {
   },
   methods: {
     play() {
-      this.createBattle(this.container);
+      this.battle = null;
+      const seconds = 0;
+      const timeout = setTimeout(() => {
+        this.createBattle(this.container);
 
-      VueEventBus.$on("battleRunning", value => {
-        this.battle = value;
-      });
+        VueEventBus.$on("battleRunning", value => {
+          this.battle = value;
+        });
+
+        clearTimeout(timeout);
+      }, seconds * 1000);
     }
   }
 };

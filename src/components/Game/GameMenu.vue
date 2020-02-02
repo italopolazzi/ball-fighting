@@ -5,7 +5,7 @@
         <div class="overline mt-2">{{ namespace }}</div>
         <v-row>
           <v-col>
-            <v-btn icon @click="fullscreenToogle">
+            <v-btn title="Back to launcher" icon @click="backToLauncher">
               <v-icon>mdi-stop</v-icon>
             </v-btn>
 
@@ -88,6 +88,9 @@ export default {
     };
   },
   methods: {
+    backToLauncher() {
+      this.$router.push({ name: "launcher-hall" });
+    },
     fullscreenToogle() {
       if (this.fullscreen) {
         document.exitFullscreen();
