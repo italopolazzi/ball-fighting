@@ -14,6 +14,15 @@ class Cure extends EffectCancelable {
         // do nothing
         // only overrides the previous effect
     }
+
+    static info() {
+        return {
+            name: "Cure",
+            color: EFFECTS.CLASSES.CANCELABLE.CURE.COLOR,
+            description: "Cure dev temp description",
+            super_class: "EffectCancelable"
+        }
+    }
 }
 
 export default Cure

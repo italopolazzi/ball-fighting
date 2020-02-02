@@ -13,6 +13,15 @@ class Benediction extends EffectTransferable {
     mod() {
         this.character_owner.incrementLifes(EFFECTS.CLASSES.TRANSFERABLE.BENEDICTION.INCREMENT_LIFES)
     }
+
+    static info() {
+        return {
+            name: "Benediction",
+            color: EFFECTS.CLASSES.TRANSFERABLE.BENEDICTION.COLOR,
+            description: "Benediction dev temp description",
+            super_class: "EffectTransferable"
+        }
+    }
 }
 
 export default Benediction

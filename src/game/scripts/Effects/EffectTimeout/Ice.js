@@ -22,6 +22,15 @@ class Ice extends EffectTimeout {
     beforeDestroy() {
         this.character_owner.movement_speed = this.save
     }
+
+    static info() {
+        return {
+            name: "Ice",
+            color: EFFECTS.CLASSES.TIMEOUT.ICE.COLOR,
+            description: "Ice dev temp description",
+            super_class: "EffectTimeout"
+        }
+    }
 }
 
 export default Ice

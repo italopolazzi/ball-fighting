@@ -13,6 +13,15 @@ class LessLifes extends EffectInstant {
     mod() {
         this.character_owner.decrementLifes(EFFECTS.CLASSES.INSTANT.LESS_LIFES.DECREMENT_LIFES)
     }
+
+    static info() {
+        return {
+            name: "LessLifes",
+            color: EFFECTS.CLASSES.INSTANT.LESS_LIFES.COLOR,
+            description: "LessLifes dev temp description",
+            super_class: "EffectInstant"
+        }
+    }
 }
 
 export default LessLifes

@@ -13,6 +13,15 @@ class Virus extends EffectInfectious {
     mod() {
         this.character_owner.decrementLifePoints()
     }
+
+    static info() {
+        return {
+            name: "Virus",
+            color: EFFECTS.CLASSES.INFECTIOUS.VIRUS.COLOR,
+            description: "Virus dev temp description",
+            super_class: "EffectInfectious"
+        }
+    }
 }
 
 export default Virus

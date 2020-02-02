@@ -22,6 +22,15 @@ class Invisible extends EffectTimeout {
     beforeDestroy() {
         this.character_owner.color = this.save
     }
+
+    static info() {
+        return {
+            name: "Invisible",
+            color: EFFECTS.CLASSES.TIMEOUT.INVISIBLE.COLOR,
+            description: "Invisible dev temp description",
+            super_class: "EffectTimeout"
+        }
+    }
 }
 
 export default Invisible

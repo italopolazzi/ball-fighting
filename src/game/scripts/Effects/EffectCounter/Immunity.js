@@ -24,6 +24,15 @@ class Immunity extends EffectCounter {
     beforeDestroy() {
         // do nothing
     }
+
+    static info() {
+        return {
+            name: "Immunity",
+            color: EFFECTS.CLASSES.COUNTER.IMMUNITY.COLOR,
+            description: "Immunity dev temp description",
+            super_class: "EffectCounter"
+        }
+    }
 }
 
 export default Immunity

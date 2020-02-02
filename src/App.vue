@@ -10,7 +10,7 @@
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-html
-  overflow-y: hidden!important
-  overflow-x: hidden!important
+// html
+//   overflow-y: hidden!important
+//   overflow-x: hidden!important
 </style>

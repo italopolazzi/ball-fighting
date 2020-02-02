@@ -21,6 +21,15 @@ class Revival extends EffectCounter {
     beforeDestroy() {
         // do nothing
     }
+
+    static info() {
+        return {
+            name: "Revival",
+            color: EFFECTS.CLASSES.COUNTER.REVIVAL.COLOR,
+            description: "Revival dev temp description",
+            super_class: "EffectCounter"
+        }
+    }
 }
 
 export default Revival

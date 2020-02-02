@@ -13,6 +13,15 @@ class Death extends EffectInstant {
     mod() {
         this.character_owner.lifes = EFFECTS.CLASSES.INSTANT.DEATH.LIFES_MOD
     }
+
+    static info() {
+        return {
+            name: "Death",
+            color: EFFECTS.CLASSES.INSTANT.DEATH.COLOR,
+            description: "Death dev temp description",
+            super_class: "EffectInstant"
+        }
+    }
 }
 
 export default Death

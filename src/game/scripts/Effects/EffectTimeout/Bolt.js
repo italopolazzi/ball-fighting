@@ -22,6 +22,15 @@ class Bolt extends EffectTimeout {
     beforeDestroy() {
         this.character_owner.movement_speed = this.save
     }
+
+    static info() {
+        return {
+            name: "Bolt",
+            color: EFFECTS.CLASSES.TIMEOUT.BOLT.COLOR,
+            description: "Bolt dev temp description",
+            super_class: "EffectTimeout"
+        }
+    }
 }
 
 export default Bolt

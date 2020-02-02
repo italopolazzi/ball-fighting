@@ -22,6 +22,15 @@ class Turtle extends EffectTimeout {
     beforeDestroy() {
         this.character_owner.movement_speed = this.save
     }
+
+    static info() {
+        return {
+            name: "Turtle",
+            color: EFFECTS.CLASSES.TIMEOUT.TURTLE.COLOR,
+            description: "Turtle dev temp description",
+            super_class: "EffectTimeout"
+        }
+    }
 }
 
 export default Turtle

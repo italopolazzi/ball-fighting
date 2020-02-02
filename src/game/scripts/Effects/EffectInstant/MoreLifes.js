@@ -13,6 +13,15 @@ class MoreLifes extends EffectInstant {
     mod() {
         this.character_owner.incrementLifes(EFFECTS.CLASSES.INSTANT.MORE_LIFES.INCREMENT_LIFES)
     }
+
+    static info() {
+        return {
+            name: "MoreLifes",
+            color: EFFECTS.CLASSES.INSTANT.MORE_LIFES.COLOR,
+            description: "MoreLifes dev temp description",
+            super_class: "EffectInstant"
+        }
+    }
 }
 
 export default MoreLifes

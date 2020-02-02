@@ -13,6 +13,15 @@ class Curse extends EffectTransferable {
     mod() {
         this.character_owner.decrementLifes(EFFECTS.CLASSES.TRANSFERABLE.CURSE.DECREMENT_LIFES)
     }
+
+    static info() {
+        return {
+            name: "Curse",
+            color: EFFECTS.CLASSES.TRANSFERABLE.CURSE.COLOR,
+            description: "Curse dev temp description",
+            super_class: "EffectTransferable"
+        }
+    }
 }
 
 export default Curse

@@ -1,5 +1,17 @@
 <template>
   <div class="launcher-about">
-    <h1>This is an about page</h1>
+    <v-container fluid>
+      <v-row no-gutters>
+        <AboutRules />
+      </v-row>
+    </v-container>
   </div>
 </template>
+
+<script>
+import AboutRules from "@/views/Launcher/About/AboutRules";
+export default {
+  name: "launcher-about",
+  components: { AboutRules }
+};
+</script>
