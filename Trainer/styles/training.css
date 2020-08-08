@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    --total-battles: 27;
+    --canvas-size: 150px;
+}
+
+body {
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-family: monospace;
+}
+
+#game {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#training,
+#info {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    align-items: baseline;
+    justify-content: flex-start;
+    width: 100vw;
+}
+
+#training {
+    /* height: 40vh; */
+    flex-flow: row wrap;
+}
+
+canvas {
+    /* border: black 1px solid; */
+    flex: 0 1 calc(var(--canvas-size) / var(--total-battles));
+    height: var(--canvas-size);
+}
+
+canvas:nth-child(2n) {
+    background: black;
+}
+
+canvas:nth-child(2n+1) {
+    background: #111;
+}
+
+#info {
+    /* height: 40vh; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+#info>* {
+    height: 100%;
+}
+
+#players,
+#trainers {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+#players {
+    background: lightgreen;
+    flex: 2 1 auto;
+}
+
+#trainers {
+    background: white;
+    flex: 0 1 auto;
+}
+
+#trainers table,
+#players table {
+    width: 100%;
+    border: 1rem solid black;
+    margin: 1rem;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1rem solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: left;
+    width: 25%;
+}
