@@ -27,7 +27,7 @@ class Turtle extends EffectTimeout {
         return {
             name: "Turtle",
             color: EFFECTS.CLASSES.TIMEOUT.TURTLE.COLOR,
-            description: "Turtle dev temp description",
+            description: "Slows down the character",
             super_class: "EffectTimeout"
         }
     }

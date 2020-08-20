@@ -19,7 +19,7 @@ class Cure extends EffectCancelable {
         return {
             name: "Cure",
             color: EFFECTS.CLASSES.CANCELABLE.CURE.COLOR,
-            description: "Cure dev temp description",
+            description: "Used only to remove the previous effect without modifying anything",
             super_class: "EffectCancelable"
         }
     }

@@ -26,7 +26,7 @@ class Revival extends EffectCounter {
         return {
             name: "Revival",
             color: EFFECTS.CLASSES.COUNTER.REVIVAL.COLOR,
-            description: "Revival dev temp description",
+            description: "Adds life points to the percentage of life",
             super_class: "EffectCounter"
         }
     }

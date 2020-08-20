@@ -18,7 +18,7 @@ class Benediction extends EffectTransferable {
         return {
             name: "Benediction",
             color: EFFECTS.CLASSES.TRANSFERABLE.BENEDICTION.COLOR,
-            description: "Benediction dev temp description",
+            description: "Adds lives to the opposing character",
             super_class: "EffectTransferable"
         }
     }

@@ -18,7 +18,7 @@ class Curse extends EffectTransferable {
         return {
             name: "Curse",
             color: EFFECTS.CLASSES.TRANSFERABLE.CURSE.COLOR,
-            description: "Curse dev temp description",
+            description: "Removes opposing character's lives",
             super_class: "EffectTransferable"
         }
     }

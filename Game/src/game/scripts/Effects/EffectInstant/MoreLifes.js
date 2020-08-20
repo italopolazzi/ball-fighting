@@ -18,7 +18,7 @@ class MoreLifes extends EffectInstant {
         return {
             name: "MoreLifes",
             color: EFFECTS.CLASSES.INSTANT.MORE_LIFES.COLOR,
-            description: "MoreLifes dev temp description",
+            description: "Adds a certain amount of lives to the character",
             super_class: "EffectInstant"
         }
     }

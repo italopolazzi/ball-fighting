@@ -18,7 +18,7 @@ class Virus extends EffectInfectious {
         return {
             name: "Virus",
             color: EFFECTS.CLASSES.INFECTIOUS.VIRUS.COLOR,
-            description: "Virus dev temp description",
+            description: "Decreases the percentage of the infected character's life over time",
             super_class: "EffectInfectious"
         }
     }

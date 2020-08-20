@@ -27,7 +27,7 @@ class Bolt extends EffectTimeout {
         return {
             name: "Bolt",
             color: EFFECTS.CLASSES.TIMEOUT.BOLT.COLOR,
-            description: "Bolt dev temp description",
+            description: "Increases character speed",
             super_class: "EffectTimeout"
         }
     }

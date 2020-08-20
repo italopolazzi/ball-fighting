@@ -18,7 +18,7 @@ class Death extends EffectInstant {
         return {
             name: "Death",
             color: EFFECTS.CLASSES.INSTANT.DEATH.COLOR,
-            description: "Death dev temp description",
+            description: "Removes all lives from the character causing immediate defeat",
             super_class: "EffectInstant"
         }
     }

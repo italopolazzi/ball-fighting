@@ -27,7 +27,7 @@ class Ice extends EffectTimeout {
         return {
             name: "Ice",
             color: EFFECTS.CLASSES.TIMEOUT.ICE.COLOR,
-            description: "Ice dev temp description",
+            description: "Freezes the character's position",
             super_class: "EffectTimeout"
         }
     }

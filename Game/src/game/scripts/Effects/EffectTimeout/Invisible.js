@@ -27,7 +27,7 @@ class Invisible extends EffectTimeout {
         return {
             name: "Invisible",
             color: EFFECTS.CLASSES.TIMEOUT.INVISIBLE.COLOR,
-            description: "Invisible dev temp description",
+            description: "Makes the character's color transparent (invisible)",
             super_class: "EffectTimeout"
         }
     }

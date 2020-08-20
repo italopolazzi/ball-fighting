@@ -29,7 +29,7 @@ class Immunity extends EffectCounter {
         return {
             name: "Immunity",
             color: EFFECTS.CLASSES.COUNTER.IMMUNITY.COLOR,
-            description: "Immunity dev temp description",
+            description: "Tries to keep lives and their percentages static",
             super_class: "EffectCounter"
         }
     }
