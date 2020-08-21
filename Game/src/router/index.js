@@ -26,12 +26,6 @@ const routes = [{
                 }]
             },
             {
-                name: "launcher-about",
-                path: 'launcher-about',
-                component: () =>
-                    import ( /* webpackChunkName: "launcher-about" */ "@/views/Launcher/LauncherAbout")
-            },
-            {
                 name: "launcher-options",
                 path: 'launcher-options',
                 component: () =>

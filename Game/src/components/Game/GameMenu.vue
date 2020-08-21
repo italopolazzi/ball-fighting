@@ -2,10 +2,31 @@
   <div class="game-menu">
     <v-card>
       <v-card-text>
-        <div class="overline mt-2">{{ namespace }}</div>
+        <div class="overline mt-2">{{ namespace }} Game Options</div>
         <v-row>
           <v-col>
-            <v-btn title="Back to launcher" icon @click="backToLauncher">
+            <v-btn icon @click="backToLauncher" title="Back to launcher">
+              <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+
+            <v-btn icon @click="fullscreenToogle" title="Turn on fullscreen">
+              <v-icon>{{ fullscreen_icon }}</v-icon>
+            </v-btn>
+
+            <!-- <v-btn icon @click="fullscreenToogle">
+              <v-icon>mdi-pause</v-icon>
+            </v-btn>
+
+            <v-btn icon @click="fullscreenToogle">
+              <v-icon>mdi-play</v-icon>
+            </v-btn>-->
+          </v-col>
+        </v-row>
+
+        <!-- <div class="overline mt-2">Display</div>
+        <v-row>
+          <v-col>
+            <v-btn icon @click="fullscreenToogle">
               <v-icon>mdi-stop</v-icon>
             </v-btn>
 
@@ -17,26 +38,9 @@
               <v-icon>mdi-play</v-icon>
             </v-btn>
           </v-col>
-        </v-row>
+        </v-row>-->
 
-        <div class="overline mt-2">Display</div>
-        <v-row>
-          <v-col>
-            <v-btn icon @click="fullscreenToogle">
-              <v-icon>mdi-stop</v-icon>
-            </v-btn>
-
-            <v-btn icon @click="fullscreenToogle">
-              <v-icon>mdi-pause</v-icon>
-            </v-btn>
-
-            <v-btn icon @click="fullscreenToogle">
-              <v-icon>mdi-play</v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
-
-        <v-divider></v-divider>
+        <!-- <v-divider></v-divider>
         <div class="overline mt-2">Namessis</div>
         <v-row>
           <v-col>
@@ -48,9 +52,9 @@
               <v-icon>{{ fullscreen_icon }}</v-icon>
             </v-btn>
           </v-col>
-        </v-row>
+        </v-row>-->
 
-        <v-divider></v-divider>
+        <!-- <v-divider></v-divider>
         <div class="overline mt-2">Namessis</div>
         <v-row>
           <v-col>
@@ -62,7 +66,7 @@
               <v-icon>{{ fullscreen_icon }}</v-icon>
             </v-btn>
           </v-col>
-        </v-row>
+        </v-row> -->
       </v-card-text>
     </v-card>
   </div>
@@ -74,17 +78,17 @@ export default {
   props: {
     namespace: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     fullscreen_icon() {
       return this.fullscreen ? "mdi-fullscreen-exit" : "mdi-fullscreen";
-    }
+    },
   },
   data() {
     return {
-      fullscreen: false
+      fullscreen: false,
     };
   },
   methods: {
@@ -98,7 +102,7 @@ export default {
         document.body.requestFullscreen();
       }
       this.fullscreen = !this.fullscreen;
-    }
-  }
+    },
+  },
 };
 </script>
