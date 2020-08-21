@@ -6,8 +6,7 @@
       </v-btn>
     </v-slide-x-transition>
     <v-btn text :to="{name: 'launcher-register'}">Play</v-btn>
-    <v-btn text :to="{name: 'launcher-about'}">About</v-btn>
-    <v-btn text :to="{name: 'launcher-options'}">Options</v-btn>
+    <v-btn disabled text :to="{name: 'launcher-options'}">Options</v-btn>
   </div>
 </template>
 
